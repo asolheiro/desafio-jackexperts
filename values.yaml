@@ -10,7 +10,7 @@ customHtml: |
   </html>
 
 image:
-  repository: asolheiro/DesafioJack
+  repository: asolheiro/desafio-jack
   tag: "latest"
 
 service:
