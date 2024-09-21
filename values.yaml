@@ -1,0 +1,20 @@
+replicasCount: 1
+
+customHtml: |
+  <html>
+  <head><title>DesafioJack</title></head>
+  <body>
+      <h1>Bem-vindo à minha solução!</h1>
+      <p>Sugestões e melhorias são muito bem vindas.</p>
+  </body>
+  </html>
+
+image:
+  repository: asolheiro/DesafioJack
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 80
+
+domain: "rmndvngrpslhr.com"
