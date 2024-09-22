@@ -1,20 +1,14 @@
 replicasCount: 1
 
-customHtml: |
-  <html>
-  <head><title>DesafioJack</title></head>
-  <body>
-      <h1>Bem-vindo à minha solução!</h1>
-      <p>Sugestões e melhorias são muito bem vindas.</p>
-  </body>
-  </html>
-
 image:
   repository: asolheiro/desafio-jack
   tag: "latest"
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
-domain: "rmndvngrpslhr.com"
+domain: 
+
+customHtml: |
+    {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}

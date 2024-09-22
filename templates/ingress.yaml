@@ -6,12 +6,13 @@ metadata:
     desafio: jackexperts
 spec:
   rules:
-    - host: {{ .Values.domain }}
+    - host: nginx.local
       http: 
-        paths: /
-        - pathType: Prefix
+        paths:
+        - path: /
+          pathType: Prefix
           backend:
             service:
               name: {{ .Release.Name }}-service
               port:
-                number: 80
+                number: 8080

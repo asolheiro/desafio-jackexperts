@@ -2,8 +2,6 @@ FROM nginx:alpine
 
 RUN adduser -D -g 'www' desafio-jack
 
-COPY ./index.html /usr/share/nginx/html/
-
 COPY ./README.md /usr/share/nginx/html
 
 COPY custom_nginx.conf /etc/nginx/nginx.conf
@@ -17,6 +15,6 @@ WORKDIR /usr/share/nginx/html
 
 USER desafio-jack
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD [ "nginx", "-g", "daemon off;"]

@@ -6,4 +6,4 @@ metadata:
     desafio: jackexperts
 data:
   index.html: |
-    {{ .Values.customHtml | indent 4 }}
+    {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
