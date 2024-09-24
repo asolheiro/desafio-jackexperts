@@ -154,5 +154,5 @@ jobs:
         run: |
           git clone https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
           ls -lha
-          cd /rmndvngrpslhr/desafio-jackexperts/helm
+          cd ./helm
           helm upgrade -i desafio-jackexperts -f values.yaml -n nginx-desafio .
