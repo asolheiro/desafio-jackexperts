@@ -129,6 +129,7 @@ jobs:
       - name: Update Helm values
         run: |
           cd desafio-jackexperts/helm
+          ls -lha
           yq e -i ".image.tag = \"${{ github.sha }}\"" .values.yaml
           git config user.email "avgsolheiro@gmail.com"
           git config user.name ${{ secrets.user_github }}
