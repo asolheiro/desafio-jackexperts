@@ -27,7 +27,7 @@ jobs:
 #        run: docker buildx build -t $IMAGE . --output desafio-jackexperts.tar
 
       - name: Build and export
-        uses: docker/build-push@v6
+        uses: docker/build-push-action@v6
         with:
           tags: $IMAGE
           outputs: type=docker, dest=/tmp/desafio-jackexperts.tar
