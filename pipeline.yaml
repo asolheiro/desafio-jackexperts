@@ -27,7 +27,7 @@ jobs:
         run: docker buildx build -t $IMAGE .
 
       - name: Save Docker image to file
-        run: docker save --output desafio-jackexperts.tar ./$IMAGE
+        run: docker save --output desafio-jackexperts.tar $IMAGE
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
