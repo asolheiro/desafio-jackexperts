@@ -60,6 +60,7 @@ jobs:
         
       - name: Load Docker image
         run: |
+          ls -a /tmp 
           docker load --input /tmp/desafio-jackexperts.tar
           docker image ls -a
 
