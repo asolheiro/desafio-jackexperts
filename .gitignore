@@ -7,8 +7,6 @@
 .kube/
 *.kubeconfig
 .kubectl-config
-*.yaml
-*.yml
 
 # Nginx
 nginx.conf

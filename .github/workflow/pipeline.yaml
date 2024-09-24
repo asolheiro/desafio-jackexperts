@@ -1,0 +1,131 @@
+name: Desafio JackExperts - Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    services:
+      docker:
+        image: docker:20.10.16-dind
+        options: --privileged
+    env:
+      TAG: ${{ github.sha }}
+      IMAGE: hub.docker.com/asolheiro/desafio-jackexperts:$TAG
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker buildx
+        uses: docker/setup-buildx-actions@v1  
+
+      - name: Build Docker image
+        run: docker buildx build -t $IMAGE .
+
+      - name: Save Docker image to file
+        run: docker save --output desafio-jackexperts.tar $IMAGE
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: desafio-jackexperts.tar
+          path: desafio-jackexperts.tar
+
+  test:
+    name: Run Trivy Security scan
+    runs-on: ubuntu-latest
+    needs: build
+    services:
+      docker:
+        image: docker:20.10.16-dind
+        options: --privileged
+    env:
+      DOCKER_DRIVER: overlay2
+      DOCKER_HOST: tcp://docker:2375/
+      DOCKER_TLS_CERTDIR: ""
+      IMAGE: hub.docker.com/asolheiro/desafio-jackexperts:$TAG
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Dowload artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: desafio-jackexperts.tar
+        
+      - name: Load Docker image
+        run: docker load -i desafio-jackexperts.tar
+
+      - name: Install Trivy
+        run: |
+          TRIVY_VERSION=$(wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+          wget --no-verbose https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz -O - | tar -zxvf -
+
+      - name: Run Trivy scan
+        run: ./trivy image --exit-code 0 --no-progress --format template --template "@contrib/gitlab.pl" -o gl-container-scanning-report.json $IMAGE
+
+      - name: Fail on CRITICAL vulnerabilities
+        run: ./trivy image --exit-code 1 --severity CRITICAL --no-progress $IMAGE
+
+  push:
+    name: Push Docker Image      
+    runs-on: ubuntu-latest
+    needs: test
+    services:
+      docker:
+        image: docker:20.10.16-dind
+        options: --privileged
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Dowload artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: desafio-jackexperts.tar
+
+      - name: Load Docker Image
+        run: docker load -i desafio-jackexperts.tar
+
+      - name: Login to DockerHub
+        run: docker push $IMAGE
+
+  update:
+    name: Update Helm Chart
+    runs-on: ubuntu-latest
+    needs: push
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Clone Helm repository
+        run: git clone https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
+
+      - name: Update Helm values
+        run: |
+          cd desafio-jackexperts/helm
+          yq e -i ".image.tag = \"${{ github.sha }}\"" .values.yaml
+          git config user.email "avgsolheiro@gmail.com"
+          git config user.name ${{ secrets.user_github }}
+          git add .
+          git commit -m "Update image tag to ${{ github.sha }}"
+          git push https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
+
+  deploy:
+    name: Deploy to Kubernetes
+    runs-on: ubuntu-latest
+    needs: update
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install helm
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash 
+          tar xzf run: docker push $IMAGE https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
+          cd /rmndvngrpslhr/desafio-jackexperts/helm
+          helm upgrade -i desafio-jackexperts -f values.yaml -n nginx-desafio .

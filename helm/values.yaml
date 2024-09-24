@@ -1,0 +1,14 @@
+replicasCount: 1
+
+image:
+  repository: asolheiro/desafio-jackexperts
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 8080
+
+domain: 
+
+customHtml: |
+    {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
