@@ -27,7 +27,7 @@ jobs:
         run: docker buildx build -t $IMAGE .
 
       - name: Save Docker image to file
-        run: docker save --output desafio-jackexperts.tar --load $IMAGE
+        run: docker save --output desafio-jackexperts.tar $IMAGE
 
       - name: Update permissions
         run: chmod 666 desafio-jackexperts.tar
