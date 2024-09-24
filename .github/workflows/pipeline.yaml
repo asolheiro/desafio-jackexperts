@@ -60,7 +60,6 @@ jobs:
         
       - name: Load Docker image
         run: |
-          ls -a /tmp 
           docker load --input /tmp/desafio-jackexperts.tar
           docker image ls -a
 
@@ -114,7 +113,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
         
       - name: Push to DockerHub
-        run: docker push $IMAGE
+        run: docker image push asolheiro/desafio-jackexperts:${{ github.sha }}
 
   update:
     name: Update Helm Chart
