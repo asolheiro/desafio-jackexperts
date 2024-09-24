@@ -29,6 +29,9 @@ jobs:
       - name: Update permissions
         run: chmod 666 desafio-jackexperts.tar
 
+      - name: Verify permissions
+        run: ls -l desafio-jackexperts.tar
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
