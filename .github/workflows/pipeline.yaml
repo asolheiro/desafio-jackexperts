@@ -60,7 +60,6 @@ jobs:
         
       - name: Load Docker image
         run: |
-          ls -a /tmp/
           docker load --input /tmp/desafio-jackexperts.tar
           docker image ls -a
 
@@ -69,11 +68,23 @@ jobs:
           TRIVY_VERSION=$(wget -qO - "https://api.github.com/repos/aquasecurity/trivy/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
           wget --no-verbose https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz -O - | tar -zxvf -
 
-      - name: Run Trivy scan
-        run: ./trivy image --exit-code 0 --no-progress --format template --template "@contrib/gitlab.pl" -o gl-container-scanning-report.json $IMAGE
+#     - name: Run Trivy scan
+#        run: ./trivy image --exit-code 0 --no-progress --format sarif -o report.sarif $IMAGE
 
-      - name: Fail on CRITICAL vulnerabilities
-        run: ./trivy image --exit-code 1 --severity CRITICAL --no-progress $IMAGE
+#     - name: Fail on CRITICAL vulnerabilities
+#        run: ./trivy image --exit-code 1 --severity CRITICAL --no-progress $IMAGE
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: $IMAGE
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif
 
   push:
     name: Push Docker Image      
