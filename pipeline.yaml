@@ -24,10 +24,10 @@ jobs:
         uses: docker/setup-buildx-action@v1  
 
       - name: Build Docker image
-        run: docker buildx build -t $IMAGE ./nginx_files/
+        run: docker buildx build -t $IMAGE .
 
       - name: Save Docker image to file
-        run: docker save --output desafio-jackexperts.tar ./nginx_files/$IMAGE
+        run: docker save --output desafio-jackexperts.tar $IMAGE
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
