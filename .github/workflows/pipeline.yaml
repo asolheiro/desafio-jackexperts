@@ -23,20 +23,23 @@ jobs:
       - name: Set up Docker buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Docker image
-        run: docker buildx build -t $IMAGE . --output desafio-jackexperts.tar
+ #     - name: Build Docker image
+#        run: docker buildx build -t $IMAGE . --output desafio-jackexperts.tar
 
-      - name: Update permissions
-        run: chmod 666 desafio-jackexperts.tar
+      - name: Build and export
+        uses: docker/build-push@v6
+        with:
+          tags: $IMAGE
+          outputs: type=docker, dest=/tmp/desafio-jackexperts.tar
 
-      - name: Verify permissions
-        run: pwd && ls -l desafio-jackexperts.tar
+#      - name: Update permissions
+#       run: chmod 666 desafio-jackexperts.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: desafio-jackexperts.tar
-          path: ./desafio-jackexperts.tar
+          path: /tmp/desafio-jackexperts.tar
 
   test:
     name: Run Trivy Security scan
