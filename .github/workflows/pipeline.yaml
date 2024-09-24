@@ -24,7 +24,7 @@ jobs:
         uses: docker/setup-buildx-action@v1  
 
       - name: Build Docker image
-        run: docker buildx build -t $IMAGE .
+        run: docker buildx build -t $IMAGE ./nginx_files/
 
       - name: Save Docker image to file
         run: docker save --output desafio-jackexperts.tar $IMAGE
