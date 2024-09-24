@@ -47,7 +47,7 @@ jobs:
       DOCKER_DRIVER: overlay2
       DOCKER_HOST: tcp://docker:2375/
       DOCKER_TLS_CERTDIR: ""
-      IMAGE: hub.docker.com/asolheiro/desafio-jackexperts:$TAG
+      IMAGE: asolheiro/desafio-jackexperts:$TAG
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
