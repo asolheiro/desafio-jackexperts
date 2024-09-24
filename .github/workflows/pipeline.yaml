@@ -18,7 +18,7 @@ jobs:
       IMAGE: asolheiro/desafio-jackexperts:${{ github.sha }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Docker buildx
         uses: docker/setup-buildx-action@v1  
@@ -53,7 +53,7 @@ jobs:
       IMAGE: asolheiro/desafio-jackexperts:$TAG
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Dowload artifact
         uses: actions/download-artifact@v4
@@ -84,7 +84,7 @@ jobs:
         options: --privileged
     steps: 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Dowload artifact
         uses: actions/download-artifact@v4
@@ -103,7 +103,7 @@ jobs:
     needs: push
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Clone Helm repository
         run: git clone https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
@@ -124,7 +124,7 @@ jobs:
     needs: update
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install helm
         run: |
