@@ -44,9 +44,9 @@ jobs:
         image: docker:27.3.1-dind
         options: --privileged
     env:
-      DOCKER_DRIVER: overlay2
-      DOCKER_HOST: tcp://docker:2375/
-      DOCKER_TLS_CERTDIR: ""
+      #DOCKER_DRIVER: overlay2
+      #DOCKER_HOST: tcp://docker:2375/
+      #DOCKER_TLS_CERTDIR: ""
       IMAGE: asolheiro/desafio-jackexperts:$TAG
     steps:
       - name: Checkout repository
