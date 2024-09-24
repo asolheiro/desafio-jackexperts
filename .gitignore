@@ -1,0 +1,35 @@
+# Diretórios e arquivos gerados por Helm
+/chart/
+*.tgz
+*.lock
+
+# Kubernetes e arquivos de configuração locais
+.kube/
+*.kubeconfig
+.kubectl-config
+*.yaml
+*.yml
+
+# Nginx
+nginx.conf
+logs/
+*.log
+nginx/*.log
+
+# Arquivos sensíveis de ambiente (variáveis de ambiente locais)
+.env
+.env.*
+
+# Pastas de build e temporários
+/tmp/
+*.tmp
+*.bak
+*.swp
+
+# Diretórios de cache
+.cache/
+.idea/
+
+# Diretórios e arquivos gerados pelo Docker (se estiver usando)
+docker-compose.override.yml
+docker-compose.yml

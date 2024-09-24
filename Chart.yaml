@@ -1,6 +1,0 @@
-apiVersion: v2
-name: desafio-jackexperts
-description: Um mapeamento Helm para facilitar o deployment da minha solução para o desagio da Jack
-
-version: 0.1.0
-appVersion: "1.0"
