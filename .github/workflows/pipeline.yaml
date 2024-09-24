@@ -15,7 +15,7 @@ jobs:
         options: --privileged
     env:
       TAG: ${{ github.sha }}
-      IMAGE: asolheiro/desafio-jackexperts:${{ env.TAG}}
+      IMAGE: asolheiro/desafio-jackexperts:${{ TAG }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
