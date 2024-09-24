@@ -149,6 +149,9 @@ jobs:
           curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
           chmod 700 get_helm.sh
           ./get_helm.sh
-          tar xzf run: docker push $IMAGE https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
+      
+      - name: Handle chart
+        run: |
+          git clone https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
           cd /rmndvngrpslhr/desafio-jackexperts/helm
           helm upgrade -i desafio-jackexperts -f values.yaml -n nginx-desafio .
