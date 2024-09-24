@@ -28,7 +28,9 @@ jobs:
 
  #     - name: Save Docker image to file
  #       run: docker save --output desafio-jackexperts.tar --load $IMAGE
-
+      - name: List files
+        run: ls -lha
+        
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
