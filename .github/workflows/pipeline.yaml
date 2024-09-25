@@ -68,26 +68,20 @@ jobs:
           output: 'trivy-results.sarif'
       
 
-      - name: Run Trivy scanner
-        uses: aquasecurity/trivy-action@0.20.0
+      - name: Trivy Scanning
+        uses: aquasecurity/trivy-action@master
         with:
-          scan-type: config
-          hide-progress: true
-          output: trivy.txt
+            image-ref: "coloca a imagem aqui"
+            format: "table"
+            output: "trivy-results.txt"
 
-      - name: Publish Trivy Output to Summary
-        run: |
-          if [[ -s trivy.txt ]]; then
-            {
-              echo "### Security Output"
-              echo "<details><summary>Click to expand</summary>"
-              echo ""
-              echo '```terraform'
-              cat trivy.txt
-              echo '```'
-              echo "</details>"
-            } >> $GITHUB_STEP_SUMMARY
-          fi
+      - name: Upload report Trivy
+        uses: actions/upload-artifact@v2
+        with:
+            name: Trivy
+            path: |
+                trivy-results.txt
+
           
       - name: Run Trivy in GitHub SBOM mode and submit results to Dependency Graph
         uses: aquasecurity/trivy-action@0.20.0
@@ -177,4 +171,5 @@ jobs:
           git clone https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
           cd ./helm
           ls -lha ./
-          helm upgrade -i desafio-jackexperts --namespace desafio-nginx --create-namespace desafio-nginx -f values.yaml . --debug
+          helm upgrade -i desafio-jackexperts . --namespace desafio-nginx --create-namespace -f values.yaml --debug
+
