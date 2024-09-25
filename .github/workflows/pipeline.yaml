@@ -139,10 +139,13 @@ jobs:
       - name: Set up Kubeconfig
         run: |
           mkdir -p ~/.minikube
+          mkdir -p ~/.minikube/profiles
+          mkdir -p ~/.minikube/profiles/minikube
+          
           pwd ~/.minikube
-          Echo "$MINIKUBE_CLIENT_CRT" | base64 --decode > ~/.minikube/client.crt
-          echo "$MINIKUBE_CLIENT_KEY" | base64 --decode > ~/.minikube/client.key
-          echo "$MINIKUBE_CA_CRT" | base64 --decode > ~/.minikube/ca.crt
+          Echo "$MINIKUBE_CLIENT_CRT" | base64 --decode > ~/.minikube/profiles/minikube/client.crt
+          echo "$MINIKUBE_CLIENT_KEY" | base64 --decode > ~/.minikube/profiles/minikube/client.key
+          echo "$MINIKUBE_CA_CRT" | base64 --decode > ~/.minikube/profiles/minikube/ca.crt
 
           mkdir -p ~/.kube
           echo "$KUBECONFIG_BASE64" | base64 --decode > ~/.kube/config
