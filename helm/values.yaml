@@ -1,7 +1,7 @@
 replicasCount: 1
 image:
   repository: asolheiro/desafio-jackexperts
-  tag: "693fe8fc2fc11882522e81b9caeb9f07251e0fce"
+  tag: "7b9d05b3d41d056ed3a163d1a31d1bbf06a7dcff"
 service:
   type: ClusterIP
   port: 8080
