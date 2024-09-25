@@ -26,7 +26,7 @@ jobs:
       - name: Build and export
         uses: docker/build-push-action@v6
         with:
-          tags: asolheiro/desafio-jackexperts:${{ github.sha }}
+          tags: ${{ env.IMAGE }}
           outputs: type=docker, dest=/tmp/desafio-jackexperts.tar
 
       - name: Upload artifact
@@ -49,7 +49,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Dowload artifact
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: desafio-jackexperts.tar
@@ -67,10 +67,19 @@ jobs:
           format: 'sarif'
           output: 'trivy-results.sarif'
       
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
+#      - name: Upload Trivy scan results to GitHub Security tab
+ #       uses: github/codeql-action/upload-sarif@v3
+  #      with:
+   #       sarif_file: 'trivy-results.sarif'
+          
+      - name: Run Trivy in GitHub SBOM mode and submit results to Dependency Graph
+        uses: aquasecurity/trivy-action@0.20.0
         with:
-          sarif_file: 'trivy-results.sarif'
+          scan-type: 'fs'
+          format: 'github'
+          output: 'dependency-results.sbom.json'
+          image-ref: '.'
+          github-pat: ${{ secrets.GITHUB_TOKEN }}
 
   push:
     name: Push Docker Image      
@@ -120,7 +129,7 @@ jobs:
           git config user.name ${{ secrets.user_github }}
           git add .
           git commit -m "Update image tag to ${{ github.sha }}"
-          git push https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
+          git push https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/asolheiro/desafio-jackexperts.git
 
   deploy:
     name: Deploy to Kubernetes
