@@ -71,7 +71,7 @@ jobs:
       - name: Trivy Scanning
         uses: aquasecurity/trivy-action@master
         with:
-            image-ref: "coloca a imagem aqui"
+            image-ref: ${{ env.IMAGE }}
             format: "table"
             output: "trivy-results.txt"
 
