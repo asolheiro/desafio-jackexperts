@@ -177,4 +177,4 @@ jobs:
           git clone https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
           ls -lha ./
           cd ./helm
-          helm upgrade -i desafio-jackexperts -f values.yaml -n desafio-nginx .
+          helm upgrade -i desafio-jackexperts --namespace desafio-nginx --create-namespace -f values.yaml  .
