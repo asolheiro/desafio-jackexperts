@@ -154,7 +154,9 @@ jobs:
           MINIKUBE_CA_CRT: ${{ secrets.MINIKUBE_CA_CRT }}
 
       - name: Verify kubectl access
-        run: kubectl get nodes
+        run: |
+          ls -lha ~/.minikube/profiles/minikube/
+          kubectl get nodes
 
       - name: Handle chart
         run: |
