@@ -142,7 +142,7 @@ jobs:
           mkdir -p ~/.minikube/profiles
           mkdir -p ~/.minikube/profiles/minikube
           
-          Echo "$MINIKUBE_CLIENT_CRT" | base64 --decode > ~/.minikube/profiles/minikube/client.crt
+          echo "$MINIKUBE_CLIENT_CRT" | base64 --decode > ~/.minikube/profiles/minikube/client.crt
           echo "$MINIKUBE_CLIENT_KEY" | base64 --decode > ~/.minikube/profiles/minikube/client.key
           echo "$MINIKUBE_CA_CRT" | base64 --decode > ~/.minikube/ca.crt
 
