@@ -138,27 +138,11 @@ jobs:
 
       - name: Set up Kubeconfig
         run: |
-          mkdir -p ~/.minikube
-          mkdir -p ~/.minikube/profiles
-          mkdir -p ~/.minikube/profiles/minikube
-          
-          echo "$MINIKUBE_CLIENT_CRT" | base64 --decode > ~/.minikube/profiles/minikube/client.crt
-          echo "$MINIKUBE_CLIENT_KEY" | base64 --decode > ~/.minikube/profiles/minikube/client.key
-          echo "$MINIKUBE_CA_CRT" | base64 --decode > ~/.minikube/ca.crt
-
           mkdir -p ~/.kube
           echo "$KUBECONFIG_BASE64" | base64 --decode > ~/.kube/config
-
-          chmod 400 ~/.minikube/profiles/minikube/client.crt ~/.minikube/profiles/minikube/client.key
-          chmod 444 ~/.minikube/ca.crt
-
-          sed -i 's|/home/ubuntu/.minikube|/home/runner/.minikube|g' ~/.kube/config
         env:
           KUBECONFIG_BASE64: ${{ secrets.KUBECONFIG_BASE64 }}
-          MINIKUBE_CLIENT_CRT: ${{ secrets.MINIKUBE_CLIENT_CRT }}
-          MINIKUBE_CLIENT_KEY: ${{ secrets.MINIKUBE_CLIENT_KEY }}
-          MINIKUBE_CA_CRT: ${{ secrets.MINIKUBE_CA_CRT }}
-
+          
       - name: Verify kubectl access
         run:  kubectl get nodes
 
