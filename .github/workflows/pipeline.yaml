@@ -149,6 +149,9 @@ jobs:
           mkdir -p ~/.kube
           echo "$KUBECONFIG_BASE64" | base64 --decode > ~/.kube/config
 
+          chmod 400 ~/.minikube/profiles/minikube/client.crt ~/.minikube/profiles/minikube/client.key
+          chmod 444 ~/.minikube/ca.crt
+
           sed -i 's|/home/ubuntu/.minikube|/home/runner/.minikube|g' ~/.kube/config
         env:
           KUBECONFIG_BASE64: ${{ secrets.KUBECONFIG_BASE64 }}
