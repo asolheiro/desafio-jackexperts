@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  type: {{ .Values.traefik.service.type }}
+  selector:
+    app: traefik
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+  {{- if .Values.traefik.service.externalIP }}
+  externalIPs:
+    - {{ .Values.traefik.service.externalIP }}
+  {{- end }}

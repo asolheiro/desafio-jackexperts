@@ -5,6 +5,12 @@ image:
 service:
   type: ClusterIP
   port: 8080
+
+traefik:
+  service:
+    type: LoadBalancer
+    externalIP: "177.93.134.211"
+
 ingress:
   domain: "armandosolheiro.xyz"
 namespace: desafio-nginx
