@@ -32,7 +32,7 @@ Para *deploy* na nuvem:
 -   **ConfigMap:** Armazena a configuração da página web para o Nginx no Kubernetes.
 -   **Helm:** Gerencia a instalação e configuração do projeto no Kubernetes.
 -   **MagaluCloud:** Plataforma cloud onde está hospedada a VM em que o projeto foi deployado.
-
+    
 
 ## Instalação:
 
