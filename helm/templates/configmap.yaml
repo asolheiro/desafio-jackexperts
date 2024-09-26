@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     desafio: jackexperts
+    app: nginx
 data:
   {{ range $file := .Values.nginx.htmlFiles }}
   {{ $file }}: {{ template "readFile" . }}
