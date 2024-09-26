@@ -2,7 +2,7 @@ namespace: desafio-nginx
 replicasCount: 1
 image:
   repository: asolheiro/desafio-jackexperts
-  tag: "308283f349ea104a2cbb9d4f79ca458d2434b8ec"
+  tag: "31ed9001140bcd40f7b44e5af7fcda87c8155a68"
 service:
   type: ClusterIP
   port: 8080
