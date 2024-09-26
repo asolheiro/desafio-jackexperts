@@ -7,4 +7,4 @@ metadata:
     desafio: jackexperts
     app: nginx
 data:
-  index.html: {{ .Values.customHtml }}
+  index.html: {{ .Values.nginx.customHtml }}
