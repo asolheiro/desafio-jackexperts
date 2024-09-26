@@ -8,9 +8,4 @@ metadata:
     app: nginx
 data:
   index.html: {{ .Values.customHtml }}
-  TIMELINE.md: |-
-    {{- range $path := .Values.timelineMD }}
-      {{ base (path.Base.$path) }}: |
-      {{- $file := .Files.Get $path | nindent 4 }}
-      {{ $file }}
-    {{- end }}
+  TIMELINE.md: {{ .Values.customMd}}
