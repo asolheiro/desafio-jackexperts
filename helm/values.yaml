@@ -12,5 +12,8 @@ traefik:
 ingress:
   domain: "armandosolheiro.xyz"
 namespace: desafio-nginx
+
 customHtml: |-
   {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
+timelineMD: |-
+  {{ include "desafio-jackexperts.TIMELINE.mds.tpl" . }}

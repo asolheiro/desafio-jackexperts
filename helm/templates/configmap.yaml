@@ -6,5 +6,5 @@ metadata:
   labels:
     desafio: jackexperts
 data:
-  index.html: |
-    {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
+  index.html: {{ .Values.customHtml }}
+  TIMELINE.md: {{ .Values.timelineMD }}
