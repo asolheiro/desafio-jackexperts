@@ -13,10 +13,15 @@ Essa documentação diz respeito ao meu processo no Linux - Ubuntu. Verifique a 
 
 ## Pré-requisitos
 
+Para teste local:
+- **Kind:** Kubernetes IN Docker, para testes locais.
+- **Kubectl:** Ferramenta CLI para interagir com clusters Kubernetes
+- **Helm:** Gerenciador de pacotes para kubernetes
+
+Para *deploy* na nuvem:
 - **Kubernetes:** Um cluster Kubernetes em funcionamento.
 - **Helm:** Ferramenta de gerenciamento de pacotes para Kubernetes.
 - **kubectl:** Ferramenta de linha de comando para interagir com o Kubernetes.
-- **Kind:** Kubernetes IN Docker, para testes locais.
 - **AWS:** Conta na AWS com as devidas permissões para criar os recursos necessários.
 - **Um domínio:** O [armandosolheiro.xyz](http://armandosolheiro.xyz) já deve estar registrado e configurado para apontar para o load balancer da AWS.
 
