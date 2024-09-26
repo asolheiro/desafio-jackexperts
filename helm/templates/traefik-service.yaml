@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: traefik
   namespace: kube-system
+  labels:
+    desafio: jackexperts
 spec:
   type: {{ .Values.traefik.service.type }}
   selector:
