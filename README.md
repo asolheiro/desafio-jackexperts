@@ -12,26 +12,24 @@ O projeto consiste em:
 Essa documentação diz respeito ao meu processo no Linux - Ubuntu. Verifique a distribuição do seu sistema operacional antes de prosseguir.
 
 ## Pré-requisitos
-
 Para teste local:
 - **Kind:** Kubernetes IN Docker, para testes locais.
-- **Kubectl:** Ferramenta CLI para interagir com clusters Kubernetes
-- **Helm:** Gerenciador de pacotes para kubernetes
+- **Kubectl:** Ferramenta CLI para interagir com clusters Kubernetes.
+- **Helm:** Gerenciador de pacotes para kubernetes.
 
 Para *deploy* na nuvem:
-- **Kubernetes:** Um cluster Kubernetes em funcionamento.
+- **K3s:** Cluster kubernetes *single-node*.
 - **Helm:** Ferramenta de gerenciamento de pacotes para Kubernetes.
-- **kubectl:** Ferramenta de linha de comando para interagir com o Kubernetes.
-- **AWS:** Conta na AWS com as devidas permissões para criar os recursos necessários.
-- **Um domínio:** O [armandosolheiro.xyz](http://armandosolheiro.xyz) já deve estar registrado e configurado para apontar para o load balancer da AWS.
+- **Kubectl:** Ferramenta de linha de comando para interagir com o Kubernetes.
+- **Magalu Cloud:** VM instanciada na Magalu Cloud para *deploy*.
+- **Um domínio:** O [armandosolheiro.xyz](http://armandosolheiro.xyz) que apontará para o cluster.
 
 ## Arquitetura
 
--   **Página Web:** A página web personalizada é construída com HTML, CSS JavaScript.
+-   **Página Web:** A página web personalizada é construída com HTML, CSS e JavaScript.
 -   **Nginx:** Serve a página web.
 -   **ConfigMap:** Armazena a configuração da página web para o Nginx no Kubernetes.
 -   **Helm:** Gerencia a instalação e configuração do projeto no Kubernetes.
--   **Kind:** Ambiente Kubernetes local para testes.
 -   **MagaluCloud:** Plataforma cloud onde está hospedada a VM em que o projeto foi deployado.
 
 ## Instalação:
