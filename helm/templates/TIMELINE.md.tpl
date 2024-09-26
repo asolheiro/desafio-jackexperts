@@ -105,7 +105,7 @@ Montamos o arquivo e definimos variáveis, delimitadas pelos dois pares de chave
 
 A primeira será definida no momento da instalação, já a segunda faz referência à página que vamos exibir. Ela tem a seguinte estrutura:
 ```yaml
-{{ include "<TEMPLATE_NAME>" [CONTEXT] | [INDENTATION] }}
+{{ include "<TEMPLATE_NAME>" <CONTEXT> | <INDENTATION> }}
 ```
 
 Para pode utilizar essa estrutural precisei definir um templater usando a função `define`do helm. Criei um novo arquivo `./templates/index.html.tpl` com o mesmo conteúdo de `index.html`, mas definindo onde o template começa e termina, assim como seu nome:
