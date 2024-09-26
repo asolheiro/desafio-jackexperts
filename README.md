@@ -3,7 +3,8 @@
 
 ## Introdução
 
-Este documento descreve a estrutura, configuração e processo de instalação do projeto **desafio-jackexperts**, proposto pela [Jack Experts](https://github.com/JackExperts). 
+Este documento descreve a estrutura, configuração e processo de instalação do projeto **desafio-jackexperts**. 
+Esse desafio foi proposto pela [Jack Experts](https://github.com/JackExperts). 
 
 O projeto consiste em:
 > **Aplicação simples com página HTML customizável, definida via Helm e hospedada em um cluster Kubernetes**
@@ -12,12 +13,12 @@ Essa documentação diz respeito ao meu processo no Linux - Ubuntu. Verifique a 
 
 ## Pré-requisitos
 
--   **Kubernetes:** Um cluster Kubernetes em funcionamento.
--   **Helm:** Ferramenta de gerenciamento de pacotes para Kubernetes.
--   **kubectl:** Ferramenta de linha de comando para interagir com o Kubernetes.
--   **Kind:** Kubernetes IN Docker, para testes locais.
--   **AWS:** Conta na AWS com as devidas permissões para criar os recursos necessários.
--   **Um domínio:** O domínio rmndvngrpslhr.com já deve estar registrado e configurado para apontar para o load balancer da AWS.
+- **Kubernetes:** Um cluster Kubernetes em funcionamento.
+- **Helm:** Ferramenta de gerenciamento de pacotes para Kubernetes.
+- **kubectl:** Ferramenta de linha de comando para interagir com o Kubernetes.
+- **Kind:** Kubernetes IN Docker, para testes locais.
+- **AWS:** Conta na AWS com as devidas permissões para criar os recursos necessários.
+- **Um domínio:** O [armandosolheiro.xyz](http://armandosolheiro.xyz) já deve estar registrado e configurado para apontar para o load balancer da AWS.
 
 ## Arquitetura
 
