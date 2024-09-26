@@ -3,7 +3,7 @@
 
 ## Introdução
 
-Este documento descreve a estrutura, configuração e processo de instalação do projeto **desafio-jackexperts**, proposto pela [Jack Experts](github.com)(https://github.com/JackExperts). 
+Este documento descreve a estrutura, configuração e processo de instalação do projeto **desafio-jackexperts**, proposto pela [Jack Experts](https://github.com/JackExperts). 
 
 O projeto consiste em:
 > **Aplicação simples com página HTML customizável, definida via Helm e hospedada em um cluster Kubernetes**
@@ -26,7 +26,7 @@ Essa documentação diz respeito ao meu processo no Linux - Ubuntu. Verifique a 
 -   **ConfigMap:** Armazena a configuração da página web para o Nginx no Kubernetes.
 -   **Helm:** Gerencia a instalação e configuração do projeto no Kubernetes.
 -   **Kind:** Ambiente Kubernetes local para testes.
--   **AWS:** Plataforma cloud onde o projeto será deployado.
+-   **MagaluCloud:** Plataforma cloud onde está hospedada a VM em que o projeto foi deployado.
 
 ## Instalação:
 
