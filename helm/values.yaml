@@ -1,22 +1,16 @@
 replicasCount: 1
-
 image:
   repository: asolheiro/desafio-jackexperts
-  tag: "88d56e7245fb7e3a8610397d037289640e2c28e1"
-
+  tag: "6bc146b0ba44121b5614e4935c5dab094b4bb1af"
 service:
   type: ClusterIP
   port: 8080
-
 traefik:
   service:
     type: LoadBalancer
     externalIP: "177.93.134.211"
-
 ingress:
   domain: "armandosolheiro.xyz"
-
 namespace: desafio-nginx
-
 customHtml: |-
   {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
