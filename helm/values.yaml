@@ -15,5 +15,4 @@ namespace: desafio-nginx
 nginx:
   customHtml: |-
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
-  timelineMD: |-
-    {{ include "desafio-jackexperts.TIMELINE.md.tpl" . }}
+

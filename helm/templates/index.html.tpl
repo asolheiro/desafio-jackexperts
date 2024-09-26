@@ -82,11 +82,11 @@
             <div class="main">
                 <h3> Links para os elementos da solução:</h3>
                 <p class="items">
-                    <a href="https://hub.docker.com/repository/docker/asolheiro/desafio-jack/general"><img class="list-icons" src="https://www.vectorlogo.zone/logos/docker/docker-tile.svg">
+                    <a href="https://hub.docker.com/repository/docker/asolheiro/desafio-jackexperts/general"><img class="list-icons" src="https://www.vectorlogo.zone/logos/docker/docker-tile.svg">
                     Imagem no DockerHub</a>
                 </p>
                 <p class="items">
-                    <a href="https://github.com/rmndvngrpslhr/DesafioJack"><img class="list-icons" src="https://www.vectorlogo.zone/logos/github/github-tile.svg">
+                    <a href="https://github.com/asolheiro/desafio-jackexperts"><img class="list-icons" src="https://www.vectorlogo.zone/logos/github/github-tile.svg">
                     Repositório no GitHub </a>
                 </p>
                 <p class="items">
@@ -98,7 +98,7 @@
                 Documentação do projeto:
             </h2>
             <div class="md-docs">
-                <zero-md src="./TIMELINE.md">
+                <zero-md src="/home/desafio-jack/TIMELINE.md">
                     <template>
                         <style>
                             h1 {
