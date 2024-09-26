@@ -3,13 +3,13 @@ FROM nginx:alpine
 
 # RUN adduser -D -g 'www' desafio-jackexperts
 ARG USER_ID=1001
-
 ARG GROUP_ID=1001
 
 RUN addgroup -g ${GROUP_ID} desafio-jackexperts && \
     adduser -D -u ${USER_ID} -G desafio-jackexperts desafio-jackexperts
 
-COPY ./TIMELINE.md /home/desafio-jackexperts
+COPY ./TIMELINE.md /etc/nginx/share
+COPY ./favicon.ico /etc/nginx/share
 COPY ./custom_nginx.conf /etc/nginx/nginx.conf
 
 RUN mkdir -p /var/cache/nginx /var/run /var/log/nginx /var/temp/nginx && \
