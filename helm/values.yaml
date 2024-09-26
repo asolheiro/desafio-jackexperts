@@ -1,7 +1,7 @@
 replicasCount: 1
 image:
   repository: asolheiro/desafio-jackexperts
-  tag: "ece6b914f53f51867e18547516f74ef7f5bdf35a"
+  tag: "297ad09593f726741f578adf05cfdb10fdd416c1"
 service:
   type: ClusterIP
   port: 8080
@@ -15,4 +15,3 @@ namespace: desafio-nginx
 nginx:
   customHtml: |-
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
-
