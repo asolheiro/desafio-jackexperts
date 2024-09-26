@@ -98,7 +98,7 @@
                 Documentação do projeto:
             </h2>
             <div class="md-docs">
-                <zero-md src="/home/desafio-jack/TIMELINE.md">
+                <zero-md src="../TIMELINE.md">
                     <template>
                         <style>
                             h1 {
