@@ -101,7 +101,7 @@ data:
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
 ```
 
-Montamos o arquivo e definimos variáveis, delimitadas pelos dois pares de chaves {{...}}, que posteriormente serão substituídas na instalação.
+Montamos o arquivo e definimos variáveis, delimitadas pelos dois pares de chaves, os famosos *curly brackets*, que posteriormente serão substituídas na instalação.
 
 A primeira será definida no momento da instalação, já a segunda faz referência à página que vamos exibir. Ela tem a seguinte estrutura:
 ```yaml
