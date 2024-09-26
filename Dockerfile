@@ -9,7 +9,7 @@ COPY ./custom_nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /var/cache/nginx /var/run /var/log/nginx /var/temp/nginx && \
 chown -R desafio-jackexperts /var/cache/nginx /var/run /var/log/nginx /var/temp/nginx
 
-RUN chown -R desafio-jack /usr/share/nginx/html
+RUN chown -R desafio-jackexperts /usr/share/nginx/html
 
 WORKDIR /usr/share/nginx/html
 
