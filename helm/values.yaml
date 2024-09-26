@@ -5,7 +5,8 @@ image:
 service:
   type: ClusterIP
   port: 8080
-domain:
+ingress:
+  domain: "armandosolheiro.xyz"
 namespace: desafio-nginx
 customHtml: |-
   {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}

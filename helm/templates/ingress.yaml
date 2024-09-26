@@ -6,7 +6,7 @@ metadata:
     desafio: jackexperts
 spec:
   rules:
-    - host: nginx.local
+    - host: {{ .Values.ingress.domain }}
       http: 
         paths:
         - path: /
