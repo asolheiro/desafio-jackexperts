@@ -7,4 +7,9 @@ metadata:
     desafio: jackexperts
 data:
   index.html: {{ .Values.customHtml }}
-  TIMELINE.md: {{ .Values.timelineMD }}
+  TIMELINE.md: 
+  {{- range $path := .Values.timelineMD }}
+    {{ base (path.Base.$path) }}: |
+    {{- $file := .Files.Get $path | nindent 4 }}
+    {{ $file }}
+  {{- end }}
