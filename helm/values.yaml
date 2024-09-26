@@ -1,3 +1,4 @@
+namespace: desafio-nginx
 replicasCount: 1
 image:
   repository: asolheiro/desafio-jackexperts
@@ -11,10 +12,6 @@ traefik:
     externalIP: "177.93.134.211"
 ingress:
   domain: "armandosolheiro.xyz"
-namespace: desafio-nginx
-nginx:
-  customHtml: |
-    {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
 securityContext:
   runAsUser: 1001
   runAsGroup: 1001

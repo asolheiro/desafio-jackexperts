@@ -7,4 +7,5 @@ metadata:
     desafio: jackexperts
     app: nginx
 data:
-  index.html: {{ .Values.nginx.customHtml }}
+  index.html: |
+    {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
