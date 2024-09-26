@@ -13,11 +13,8 @@ ingress:
   domain: "armandosolheiro.xyz"
 namespace: desafio-nginx
 nginx:
-  htmlDir:
-  htmlFiles:
-    - index.html
-    - TIMELINE.md
-# customHtml: |-
-#   {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
-# timelineMD:
-#   - ./TIMELINE.md
+  customHtml: |-
+    {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
+  timelineMD: |-
+    {{ include "desafio-jackexperts.TIMELINE.md.tpl" . }}
+
