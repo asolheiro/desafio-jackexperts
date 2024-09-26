@@ -1,7 +1,7 @@
 
 # Desafio-jackexperts
 
-## Introdução
+## 1. Introdução
 
 Este documento descreve a estrutura, configuração e processo de instalação do projeto **desafio-jackexperts**. 
 Esse desafio foi proposto pela [Jack Experts](https://github.com/JackExperts). 
@@ -11,7 +11,7 @@ O projeto consiste em:
 
 Essa documentação diz respeito ao meu processo no Linux - Ubuntu. Verifique a distribuição do seu sistema operacional antes de prosseguir.
 
-## Pré-requisitos
+## 2. Ferramentas utilizadas
 Para teste local:
 - **Kind:** Kubernetes IN Docker, para testes locais.
 - **Kubectl:** Ferramenta CLI para interagir com clusters Kubernetes.
@@ -24,13 +24,15 @@ Para *deploy* na nuvem:
 - **Magalu Cloud:** VM instanciada na Magalu Cloud para *deploy*.
 - **Um domínio:** O [armandosolheiro.xyz](http://armandosolheiro.xyz) que apontará para o cluster.
 
-## Arquitetura
+
+## 3. Arquitetura
 
 -   **Página Web:** A página web personalizada é construída com HTML, CSS e JavaScript.
 -   **Nginx:** Serve a página web.
 -   **ConfigMap:** Armazena a configuração da página web para o Nginx no Kubernetes.
 -   **Helm:** Gerencia a instalação e configuração do projeto no Kubernetes.
 -   **MagaluCloud:** Plataforma cloud onde está hospedada a VM em que o projeto foi deployado.
+
 
 ## Instalação:
 
