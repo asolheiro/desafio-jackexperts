@@ -6,10 +6,13 @@ metadata:
   labels:
     desafio: jackexperts
 data:
-  index.html: {{ .Values.customHtml }}
-  TIMELINE.md: 
-  {{- range $path := .Values.timelineMD }}
-    {{ base (path.Base.$path) }}: |
-    {{- $file := .Files.Get $path | nindent 4 }}
-    {{ $file }}
-  {{- end }}
+  {{ range $file := .Values.nginx.htmlFiles }}
+  {{ $file }}: {{ template "readFile" . }}
+  {{ end }}
+  # index.html: {{ .Values.customHtml }}
+  # TIMELINE.md: 
+  # {{- range $path := .Values.timelineMD }}
+  #   {{ base (path.Base.$path) }}: |
+  #   {{- $file := .Files.Get $path | nindent 4 }}
+  #   {{ $file }}
+  # {{- end }}
