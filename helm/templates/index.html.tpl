@@ -98,7 +98,7 @@
                 Documentação do projeto:
             </h2>
             <div class="md-docs">
-                <zero-md src="../TIMELINE.md">
+                <zero-md src="./timeline.md">
                     <template>
                         <style>
                             h1 {
