@@ -16,11 +16,17 @@ spec:
         app: {{ .Release.Name }}
         desafio: jackexperts
     spec:
+      securityContext:
+        fsGroup: {{ .Values.securityContext.runAsGroup }}
       containers:
         - name: nginx
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 8080
+          securityContext:
+            runAsUser: {{ .Values.securityContext.runAsUser }}
+            runAsGroup: {{ .Values.securityContext.runAsGroup }}
+            allowPrivilegeEscalation: {{ .Values.securitContext.allowPrivilegedEscalation }}
           volumeMounts:
             - name: html-volume
               mountPath: /usr/share/nginx/html

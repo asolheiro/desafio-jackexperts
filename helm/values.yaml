@@ -15,3 +15,11 @@ namespace: desafio-nginx
 nginx:
   customHtml: |-
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
+
+securityContext:
+  runAsUser: 1001
+  runAsGroup: 1001
+  allowPrivilegeEscalation: false
+
+persistence:
+  enabled: false
