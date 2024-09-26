@@ -13,7 +13,7 @@ ingress:
   domain: "armandosolheiro.xyz"
 namespace: desafio-nginx
 nginx:
-  customHtml: |-
+  customHtml: |
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
 securityContext:
   runAsUser: 1001
