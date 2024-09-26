@@ -72,7 +72,7 @@ jobs:
         with:
           scan-type: config
           hide-progress: true
-          output: trivy.txt
+          output: trivy-results.txt
 
       - name: Publish Trivy Output to Summary
         run: |
