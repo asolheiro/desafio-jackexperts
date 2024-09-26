@@ -27,14 +27,34 @@ Para *deploy* na nuvem:
 
 ## 3. Arquitetura
 
--   **Página Web:** A página web personalizada é construída com HTML, CSS e JavaScript.
--   **Nginx:** Serve a página web.
--   **ConfigMap:** Armazena a configuração da página web para o Nginx no Kubernetes.
--   **Helm:** Gerencia a instalação e configuração do projeto no Kubernetes.
--   **MagaluCloud:** Plataforma cloud onde está hospedada a VM em que o projeto foi deployado.
-    
+# Arquitetura da Solução
+
+- **Repositório Git**
+  - Contém o código-fonte da aplicação e o Dockerfile
+  - Inclui os templates do Helm para o gerenciamento da aplicação
+
+- **Docker**
+  - Imagem da aplicação construída com um Dockerfile personalizado
+  - A imagem é publicada no Docker Hub
+  - A aplicação não roda como usuário root
+
+- **Kubernetes**
+  - Deploy realizado em uma VM com k3s no MagaluCloud
+  - Utilização do Helm para definir e gerenciar todos os objetos da aplicação:
+    - ConfigMap para tornar a página web configurável
+    - Deployment para gerenciar os pods da aplicação
+    - Service para expor a aplicação dentro do cluster
+    - Ingress para gerenciar o tráfego externo e roteamento
+  - Todos os objetos do cluster possuem a label `desafio=jackexperts`
+
+- **Domínio**
+  - Utilização do Hostinger para o registro e configuração do domínio da aplicação
+
+- **Documentação**
+  - Documentação abrangente sobre a arquitetura, configuração e uso da aplicação
 
 ## Instalação:
+Todos os processos de instalação mostrados aqui foram retirados das suas respectivas documentações oficiais. Há
 
 ### Instalação Local Kubernetes (Kind):
 1. Instalar o Kind localmente:
