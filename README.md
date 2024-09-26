@@ -56,22 +56,25 @@ Para *deploy* na nuvem:
 ## Instalação:
 Todos os processos de instalação mostrados aqui foram retirados das suas respectivas documentações oficiais. Há
 
-### Instalação Local Kubernetes (Kind):
+### Instalação Local Kubernetes ([Kind](https://kind.sigs.k8s.io/)):
 1. Instalar o Kind localmente:
+
 ```bash
-# For AMD64 / x86_64
+# Para AMD64 / x86_64
 [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-amd64
-# For ARM64
+# Para ARM64
 [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-arm64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 ```
 	
-2. **Instalar o kubectl:** 
+2. **Instalar o [kubectl](https://kubernetes.io/docs/reference/kubectl/):** 
+
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
+
 Teste a instalação verificando a versão do kubectl:
 ```bash
 kubectl version --client --output=yaml
