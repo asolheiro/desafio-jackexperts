@@ -174,6 +174,13 @@
                             code {
                                 color: #94e2d5;
                             }
+                            .md-docs {
+                              width: 300px; /* Define a largura da div */
+                            }
+                            
+                            .md-docs span {
+                              display: block;
+                            }
                         </style>
                     </template>
                 </zero-md>
