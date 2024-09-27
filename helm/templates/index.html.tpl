@@ -210,6 +210,8 @@
                             }
                             .md-docs {
                               width: 300px; /* Define a largura da div */
+                              padding: 15px;
+                              margin: 20px;
                             }
                             
                             .md-docs span {
