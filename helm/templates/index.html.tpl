@@ -100,7 +100,6 @@
             <div class="md-docs">
                     <script type="module">
                         import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
-                        customElements.define('zero-md', ZeroMd)
                      </script>                 
                      
                     <zero-md src="./timeline.md">
