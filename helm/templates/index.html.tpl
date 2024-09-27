@@ -107,9 +107,11 @@
                 </p>
             </div>
             <h2>
-                Instruções do desafio
+                <button onclick="toggleContent()">Instruções do desafio</button>
+                
             </h2>
-            <div class="md-docs">
+            <div class="md-docs container">
+                <div class="content">
                 <ul>
                 <li><strong>Criação e Configuração:</li>
                     <ul>
@@ -157,10 +159,11 @@
                                 </ul>
                     </ul>
             </div>
+            </div>
             <h2>
-                Documentação do projeto:
+                <button onclick="toggleContent()">Documentação do projeto:</button>
             </h2>
-            <button onclick="toggleContent()">Mostrar/Ocultar</button>
+
             <div class="md-docs container">
                 <div class="content">
                 <script type="module">
