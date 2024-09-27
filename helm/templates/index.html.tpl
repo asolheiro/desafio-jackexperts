@@ -27,6 +27,9 @@
                     margin-left: 15;
                     color: #007acc;
                     }
+                    a {
+                        text-decoration: none;
+                    }
 
                     footer {
                     display: flex;
@@ -95,12 +98,9 @@
                 </p>
             </div>
             <h2>
-                Documentação do projeto:
+                Instruções do desafio
             </h2>
-           
             <div class="md-docs">
-                <h1>Desafio JackExperts</h1>
-                <h2>Instruções Detalhadas</h2>
                 <ul>
                 <li><strong>Criação e Configuração:</li>
                     <ul>
@@ -148,6 +148,9 @@
                                 </ul>
                     </ul>
             </div>
+            <h2>
+                Documentação do projeto:
+            </h2>
             <div class="md-docs">
                 <script type="module">
                     import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
@@ -162,6 +165,14 @@
                                 padding: 15px;
                                 margin: 20px;
                                 color: #cdd6f4
+                            }
+                            a {
+                                color: #f5c2e7;
+                                font-weight: semi-bold;
+                                text-decoration: none;
+                            }
+                            code {
+                                color: #94e2d5;
                             }
                         </style>
                     </template>
