@@ -89,9 +89,10 @@
                     button {
                       font-family: 'Montserrat', sans-serif;
                       padding: 0.5em;
-                      background-color: ffb400;
+                      background-color: #ffb400;
                       color: #2d2d30;
-                      cursor: pointer; 
+                      cursor: pointer;
+                      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
                     }
 
             </style>
