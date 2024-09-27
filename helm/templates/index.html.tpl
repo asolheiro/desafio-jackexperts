@@ -102,7 +102,7 @@
                         import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
                      </script>                 
                      
-                    <zero-md src="https://github.com/asolheiro/desafio-jack-doc/blob/d8fbd298d9dd759d613d2e41ba152fa69887339b/README.md">
+                    <zero-md src="https://br-ne1.magaluobjects.com/juris-public-files-to-download/armando/README.md">
                         <template>
                             <style>
                                 body {
