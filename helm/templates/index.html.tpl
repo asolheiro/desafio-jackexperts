@@ -97,25 +97,7 @@
             <h2>
                 Documentação do projeto:
             </h2>
-            <div class="md-docs">
-                    <script type="module">
-                        import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
-                     </script>                 
-                     
-                    <zero-md src="https://br-ne1.magaluobjects.com/juris-public-files-to-download/armando/README.md">
-                        <template>
-                            <style>
-                                body {
-                                    background-color: #ffb400;
-                                    border-radius: 10px;
-                                    padding: 15px;
-                                    margin: 20px;
-                                    color: #cdd6f4
-                                }
-                            </style>
-                        </template>
-                    </zero-md>
-            </div>
+           
             <div class="md-docs">
                 <h1>Desafio JackExperts</h1>
                 <h2>Instruções Detalhadas</h2>
@@ -165,6 +147,25 @@
                                     <li>Apresentar a pipeline no vídeo demonstrativo.</li>
                                 </ul>
                     </ul>
+            </div>
+            <div class="md-docs">
+                <script type="module">
+                    import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
+                 </script>                 
+                 
+                <zero-md src="https://br-ne1.magaluobjects.com/juris-public-files-to-download/armando/README.md">
+                    <template>
+                        <style>
+                            body {
+                                background-color: #ffb400;
+                                border-radius: 10px;
+                                padding: 15px;
+                                margin: 20px;
+                                color: #cdd6f4
+                            }
+                        </style>
+                    </template>
+                </zero-md>
             </div>
             <h2>Sugestões e melhorias são muito bem vindas.</h2>
         </body>
