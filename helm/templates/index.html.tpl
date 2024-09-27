@@ -190,7 +190,7 @@
                     import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
                  </script>                 
                  
-                <zero-md src="https://br-ne1.magaluobjects.com/juris-public-files-to-download/armando/README.md">
+                <zero-md src="https://gitlab.com/avgsolheiro/desafio-jackexperts-docs/-/raw/main/README.md">
                     <template>
                         <style>
                             body {
