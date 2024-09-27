@@ -373,7 +373,7 @@ Na interface da plataforma fornecedora do domínio,
 
 ## 7. Pipeline:
 
-Esta SEÇÃO descreve a pipeline do GitHub Actions utilizada para construir, testar, publicar e implantar uma aplicação Dockerizada no Kubernetes. 
+Esta seção descreve a pipeline do GitHub Actions utilizada para construir, testar, publicar e implantar uma aplicação Dockerizada no Kubernetes. 
 
 A pipeline é composta por cinco jobs principais: 
 - `build`, 
@@ -382,11 +382,9 @@ A pipeline é composta por cinco jobs principais:
 - `update`
 - `deploy`.
 
-### 7.1 Estrutura da Pipeline
-
 A pipeline é acionada em cada push para a *branch* `main`. A seguir, cada job é descrito em detalhes.
 
-#### 7.1.1. Build Docker Image
+### 7.1. Build Docker Image
 
 **Job: `build`**
 
@@ -409,7 +407,7 @@ A pipeline é acionada em cada push para a *branch* `main`. A seguir, cada job �
 - **Ambiente**: `ubuntu-latest`
 - **Dependências**: Necessita do job `build`.
 
-#### 7.2.1. Passos:
+##### Passos:
 1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório novamente.
 2. **[Download artifact](https://github.com/actions/download-artifact)**: Faz o download do arquivo tar com a imagem Docker.
 3. **[Load Docker image](https://docs.docker.com/reference/cli/docker/image/load/)**: Carrega a imagem Docker do arquivo tar.
@@ -426,7 +424,7 @@ A pipeline é acionada em cada push para a *branch* `main`. A seguir, cada job �
 - **Ambiente**: `ubuntu-latest`
 - **Dependências**: Necessita do job `test`.
 
-#### 7.3.1. Passos:
+##### Passos:
 1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório novamente.
 2. **[Download artifact](https://github.com/actions/download-artifact)**: Faz o download do arquivo tar com a imagem Docker.
 3. **[Load Docker Image](https://docs.docker.com/reference/cli/docker/image/load/)**: Carrega a imagem Docker do arquivo tar.
@@ -441,7 +439,7 @@ A pipeline é acionada em cada push para a *branch* `main`. A seguir, cada job �
 - **Ambiente**: `ubuntu-latest`
 - **Dependências**: Necessita do job `push`.
 
-#### 7.4.1 Passos:
+#### Passos:
 1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório novamente.
 2. **[Clone Helm repository](https://git-scm.com/docs/git-clone)**: Clona o repositório Helm onde os valores serão atualizados.
 3. **[Update Helm values](https://github.com/mikefarah/yq)**: Modifica o arquivo `values.yaml` para incluir a nova tag da imagem.
@@ -455,7 +453,7 @@ A pipeline é acionada em cada push para a *branch* `main`. A seguir, cada job �
 - **Ambiente**: `ubuntu-latest`
 - **Dependências**: Necessita do job `update`.
 
-#### 7.5.1. Passos:
+#### Passos:
 1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório novamente.
 2. **[Install Helm](https://helm.sh/docs/intro/install/)**: Baixa e instala o Helm.
 3. **[Set up Kubeconfig](https://kubernetes.io/pt-br/docs/concepts/configuration/organize-cluster-access-kubeconfig/)**: Decodifica e configura o Kubeconfig usando um segredo.
