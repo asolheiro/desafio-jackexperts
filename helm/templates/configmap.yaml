@@ -11,8 +11,3 @@ data:
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
   index2.html: |
     {{ .Files.Get "index.html" | indent 4  }}
-
-  timeline.md: |
-    {{ .Files.Get "timeline.md" | indent 4 }}
-
-  
