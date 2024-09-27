@@ -1,6 +1,19 @@
 apiVersion: v2
-name: desafio-jackexperts
-description: Um mapeamento Helm para facilitar o deployment da minha solução para o desagio da Jack
-
-version: 0.1.0
 appVersion: "1.0"
+version: 0.1.0
+name: desafio-jackexperts
+description: Um mapeamento de configurações utilizando Helm para facilitar o deployment da minha solução para o desafio da Jack
+type: application
+keywords:
+  - nginx
+  - K3s
+  - Kubernetes
+  - jackexperts
+home: "armandosolheiro.xyz"
+sources:
+  - "https://hub.docker.com/repository/docker/asolheiro/desafio-jackexperts/general"
+  - "https://github.com/asolheiro/desafio-jackexperts"
+maintainers:
+  - name: Armando A. v. G. Solheiro
+    email: avgsolheiro@gmail.com
+    url: www.linkedin.com/in/armandosolheiro

@@ -98,18 +98,7 @@
                 Documentação do projeto:
             </h2>
             <div class="md-docs">
-                <zero-md src="./timeline.md">
-                    <template>
-                        <style>
-                            h1 {
-                                color: #89b4fa;
-                            }
-                            h2 {
-                                color: #89b4fa;
-                            }
-                        </style>
-                    </template>
-                </zero-md>
+                <iframe src="./timeline.html" width="100%" height="100%">
             </div>
         </body>
         <footer>

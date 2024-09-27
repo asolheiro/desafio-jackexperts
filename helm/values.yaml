@@ -1,20 +1,23 @@
-namespace: desafio-nginx
-replicasCount: 1
+namespace: desafio-nginx # namespace da aplicação
+replicasCount: 1  # número de replicas
 image:
+<<<<<<< HEAD
   repository: asolheiro/desafio-jackexperts
   tag: "1063974fcb32edc586fbbbf442d4f5b211031f72"
+=======
+  repository: asolheiro/desafio-jackexperts   # repositório do registry que armazena a imagem
+  tag: "bb1717130714b223540d47f0a564b4df12312a3b" # tag da imagem
+>>>>>>> f1bcce6 (fixing pipeline)
 service:
-  type: ClusterIP
-  port: 8080
+  type: ClusterIP # tipo do service criado
+  port: 8080  # porta do service criado
 traefik:
   service:
-    type: LoadBalancer
-    externalIP: "177.93.134.211"
+    type: LoadBalancer  # tipo do service
+    externalIP: "177.93.134.211"  # IP da VM que hospeda o Cluster
 ingress:
-  domain: "armandosolheiro.xyz"
+  domain: "armandosolheiro.xyz" # domínio que aponta para o cluster
 securityContext:
-  runAsUser: 1001
-  runAsGroup: 1001
-  allowPrivilegeEscalation: false
-persistence:
-  enabled: false
+  runAsUser: 1001 # informações sobre o usuário criado no Dockerfile
+  runAsGroup: 1001 # informações sobre o usuário criado no Dockerfile
+  allowPrivilegeEscalation: false # impede privilégios adicionais no contêiner

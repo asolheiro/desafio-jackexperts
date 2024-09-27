@@ -9,4 +9,6 @@ metadata:
 data:
   index.html: |
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
+  timeline.html: |
+    {{ include "desafio-jackexperts.timeline.html.tpl" . | indent 4}}
   

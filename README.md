@@ -11,7 +11,7 @@ O projeto consiste em:
 
 Essa documentação diz respeito ao meu processo no Linux - Ubuntu. Verifique a distribuição do seu sistema operacional antes de prosseguir.
 
-## 2. Ferramentas utilizadas
+### 1.2. Ferramentas utilizadas
 Para teste local:
 - **Kind:** Kubernetes IN Docker, para testes locais.
 - **Kubectl:** Ferramenta CLI para interagir com clusters Kubernetes.
@@ -25,9 +25,7 @@ Para *deploy* na nuvem:
 - **Um domínio:** O [armandosolheiro.xyz](http://armandosolheiro.xyz) que apontará para o cluster.
 
 
-## 3. Arquitetura
-
-# Arquitetura da Solução
+## 2. Arquitetura da solução
 
 - **Repositório Git**
   - Contém o código-fonte da aplicação e o Dockerfile
@@ -53,14 +51,71 @@ Para *deploy* na nuvem:
 - **Documentação**
   - Documentação abrangente sobre a arquitetura, configuração e uso da aplicação
 
+## 3. Nginx
+
+
 ## 4. Helm
-Helm é o gerenciador de pacotes utilizado para 
+Helm é um gerenciador de pacotes utilizado para facilitar e padronizar o deploy de aplicações. Com ele, definimos templates de arquivos manifestos para um para cada um dos objetos do Kubernetes e um arquivo `values.yaml` que guarda as variáveis que desejamos aplicação:
 
+A estrutura utilizado é a seguinte:
+```perl
+desafio-jackexperts/
+├── Chart.yaml          # Metadados do projeto
+├── values.yaml         # Valores de configuração padrão
+├── charts/             # Dependências do projeto
+├── templates/          # Modelos de recursos Kubernetes
+│   ├── configmap.yaml
+│   ├── deployment.yaml
+│   ├── ingress.yaml
+│   ├── index.html.tpl
+│   ├── namespace.yaml
+│   ├── service.yaml  
+│   ├── traefik-service.yaml   
+│   └── _helpers.tpl     
+└── .helmignore
+```
+Abaixo, o detalhamento dos arquivos de configuração
 
-## Instalação:
-Todos os processos de instalação mostrados aqui foram retirados das suas respectivas documentações oficiais. Há
+### 4.1. Mapeamento de variáveis
 
-### .1. Instalação Local Kubernetes ([Kind](https://kind.sigs.k8s.io/)):
+A tabela a seguir lista os parâmetros configurados para o mapeamento "desafio-jackexperts" assim como suas descrições e valores definidos em `values.yaml`.
+
+| Parâmetro                | Descrição               | Valor        |
+| ------------------------ | ----------------------- | -------------- |
+| `namespace` | namespace da aplicação | `"desafio-nginx"` |
+| `replicasCount` | número de replicas | `1` |
+| `image.repository` | repositório do registry que armazena a imagem | `"asolheiro/desafio-jackexperts"` |
+| `image.tag` | tag da imagem | `"bb1717130714b223540d47f0a564b4df12312a3b"` |
+| `service.type` | tipo do service criado | `"ClusterIP"` |
+| `service.port` | porta do service criado | `8080` |
+| `traefik.service.type` | tipo do service | `"LoadBalancer"` |
+| `traefik.service.externalIP` | IP da VM que hospeda o Cluster | `"177.93.134.211"` |
+| `ingress.domain` | domínio que aponta para o cluster | `"armandosolheiro.xyz"` |
+| `securityContext.runAsUser` | informações sobre o usuário criado no Dockerfile | `1001` |
+| `securityContext.runAsGroup` | informações sobre o usuário criado no Dockerfile | `1001` |
+| `securityContext.allowPrivilegeEscalation` | impede privilégios adicionais no contêiner | `false` |
+
+### 4.2. Templates adicionais
+
+Para conseguir importar com sucesso o `index.html` usando o `configmap.yaml` foi necessário criar um novo template chamado `desafio-jackexperts.index.html.tpl` em `/templates/index.html.tpl`:
+```html
+{{- define "desafio-jackexperts.index.html.tpl" -}}
+<!-- Conteúdo do index.html -->
+{{- end -}}
+```
+
+Dessa forma, em `/templates/configmap.yaml` podemos importar o template usando:
+
+```yaml
+data:
+  index.html: |
+    {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
+```
+
+## 5. Instalação:
+Todos os processos de instalação mostrados aqui foram retirados das suas respectivas documentações oficiais.
+
+### 5.1. Instalação Local Kubernetes ([Kind](https://kind.sigs.k8s.io/)):
 1. **Instalar o Kind localmente**:
 
 ```bash
@@ -144,7 +199,7 @@ kubectl get ingress
 
 > Nota: é possível que hajam inconsistências na execução se o Ingress estiver configurado para funcionar com hosts externos. Verifique com atenção os arquivos de configuração para seu caso de uso específico.
 
-### Instalação na MagaluCloud:
+### 5.2. Instalação na MagaluCloud:
 
 1.  **Instanciar uma VM na cloud:** 
 
@@ -200,7 +255,7 @@ curl -sfL https://get.k3s.io | K3S_URL=https://<SERVER_IP>:6443 K3S_TOKEN=<NODE_
 `K3S_TOKEN` está disponível em `/var/lib/rancher/k3s/server/node-token`
 
 5.  **Configurar o kubectl:**
-6.  
+
 Para que o Kubectl local possa agir corretamente no Cluster da VM, é necessário que tenhamos o `config.yaml` deste cluster. No caso do k3s, essa informação fica armazenada em `etc/rancher/k3s/k3s.yaml`.
 
 Traga para a máquina local o arquivo e utilize-o para exportar como variável de ambiente o arquivo de configurações:
@@ -234,7 +289,7 @@ helm install <RELEASE-NAME> ./helm
 ```
 Substitua `<RELEASE-NAME>` pelo nome desejado para o release.
 
-## Configuração do Domínio
+## 6. Configuração do Domínio
 
 1.  **Obter o endereço IP do LoadBalancer:**
 
@@ -249,30 +304,112 @@ Na interface da plataforma fornecedora do domínio,
 - selecione o domínio desejado, nesse caso armandosolheiro.xyz 
 - aponte-o para o endereço IP do LoadBalancer.
 
-## Pipeline:
+## 7. Pipeline:
 
-## Detalhes Adicionais:
+Esta SEÇÃO descreve a pipeline do GitHub Actions utilizada para construir, testar, publicar e implantar uma aplicação Dockerizada no Kubernetes. 
 
--   **Estrutura de diretórios:**
-    -   **templates:** Contém os templates Helm para criar os recursos Kubernetes.
-    -   **charts:** Contém gráficos e outros arquivos de configuração.
-    -   **values.yaml:** Arquivo de valores para personalizar a instalação.
--   **ConfigMap:** O ConfigMap contém a configuração do Nginx, incluindo as configurações de proxy reverso.
--   **Serviço:** O serviço expõe a aplicação para o mundo externo através de um LoadBalancer.
- 
-### Próximos Passos
-- **Pipeline**
-- **Resources para o deployment**
+A pipeline é composta por cinco jobs principais: 
+- `build`, 
+- `test`, 
+- `push`, 
+- `update`
+- `deploy`.
+
+### 7.1 Estrutura da Pipeline
+
+A pipeline é acionada em cada push para a *branch* `main`. A seguir, cada job é descrito em detalhes.
+
+#### 7.1.1. Build Docker Image
+
+**Job: `build`**
+
+- **Descrição**: Este job é responsável por construir a imagem Docker da aplicação.
+- **Ambiente**: `ubuntu-latest`
+- **Serviços**: Utiliza o Docker-in-Docker (dind) na versão `27.3.1`.
+
+##### Passos:
+1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório do GitHub.
+2. **[Set up Docker buildx](https://github.com/docker/setup-buildx-action)**: Configura o Docker Buildx para construção de imagens.
+3. **[Build and export](https://github.com/docker/build-push-action)**: Constrói a imagem Docker e a exporta para um arquivo tar.
+4. **[Upload artifact](https://github.com/actions/upload-artifact)**: Faz o upload do arquivo tar gerado como artefato.
+
+
+### 7.2. Run Trivy Security Scan
+
+**Job: `test`**
+
+- **Descrição**: Executa uma varredura de segurança usando o Trivy para identificar vulnerabilidades na imagem Docker.
+- **Ambiente**: `ubuntu-latest`
+- **Dependências**: Necessita do job `build`.
+
+#### 7.2.1. Passos:
+1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório novamente.
+2. **[Download artifact](https://github.com/actions/download-artifact)**: Faz o download do arquivo tar com a imagem Docker.
+3. **[Load Docker image](https://docs.docker.com/reference/cli/docker/image/load/)**: Carrega a imagem Docker do arquivo tar.
+4. **[Run trivy vulnerability scanner](https://github.com/aquasecurity/trivy-action)**: Realiza a varredura de vulnerabilidades na imagem.
+5. **[Publish Trivy Output to Summary](https://github.com/aquasecurity/trivy)**: Publica os resultados da varredura no resumo do GitHub.
+6. **[Upload artifact](https://github.com/actions/upload-artifact)**: Faz o upload dos resultados da varredura como artefato.
+7. **[Run trivy in GitHub SBOM mode and submit results to Dependency Graph](https://github.com/aquasecurity/trivy-action)**: Envia resultados ao gráfico de dependências do GitHub.
+
+### 7.3. Push Docker Image
+
+**Job: `push`**
+
+- **Descrição**: Este job é responsável por enviar a imagem Docker para o Docker Hub.
+- **Ambiente**: `ubuntu-latest`
+- **Dependências**: Necessita do job `test`.
+
+#### 7.3.1. Passos:
+1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório novamente.
+2. **[Download artifact](https://github.com/actions/download-artifact)**: Faz o download do arquivo tar com a imagem Docker.
+3. **[Load Docker Image](https://docs.docker.com/reference/cli/docker/image/load/)**: Carrega a imagem Docker do arquivo tar.
+4. **[Login to DockerHub](https://github.com/docker/login-action)**: Realiza o login no Docker Hub usando credenciais armazenadas como segredos.
+5. **[Push to DockerHub](https://docs.docker.com/reference/cli/docker/image/push/)**: Envia a imagem Docker para o Docker Hub.
+
+### 7.4. Update Helm Chart
+
+**Job: `update`**
+
+- **Descrição**: Atualiza o Helm Chart da aplicação com a nova tag da imagem.
+- **Ambiente**: `ubuntu-latest`
+- **Dependências**: Necessita do job `push`.
+
+#### 7.4.1 Passos:
+1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório novamente.
+2. **[Clone Helm repository](https://git-scm.com/docs/git-clone)**: Clona o repositório Helm onde os valores serão atualizados.
+3. **[Update Helm values](https://github.com/mikefarah/yq)**: Modifica o arquivo `values.yaml` para incluir a nova tag da imagem.
+4. **[Commit and push](https://git-scm.com/docs/git-push/pt_BR)**: Realiza o commit das alterações e envia para o repositório.
+
+### 7.5. Deploy to Kubernetes
+
+**Job: `deploy`**
+
+- **Descrição**: Implanta a aplicação no cluster Kubernetes usando Helm.
+- **Ambiente**: `ubuntu-latest`
+- **Dependências**: Necessita do job `update`.
+
+#### 7.5.1. Passos:
+1. **[Checkout repository](https://github.com/actions/checkout)**: Clona o repositório novamente.
+2. **[Install Helm](https://helm.sh/docs/intro/install/)**: Baixa e instala o Helm.
+3. **[Set up Kubeconfig](https://kubernetes.io/pt-br/docs/concepts/configuration/organize-cluster-access-kubeconfig/)**: Decodifica e configura o Kubeconfig usando um segredo.
+4. **[Verify kubectl access](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/)**: Realiza uma verificação para garantir que o `kubectl` pode acessar o cluster.
+5. **[Helm upgrade](https://helm.sh/docs/helm/helm_upgrade/)**: Clona o repositório Helm e realiza o upgrade ou instalação do chart.
+
+## 8. Considerações Finais
+
+Esta pipeline automatiza o processo de construção, teste e implantação de uma aplicação Dockerizada, garantindo que as imagens sejam seguras e estejam sempre atualizadas no cluster Kubernetes. O uso de ferramentas como Trivy para análise de vulnerabilidades e Helm para gerenciamento de pacotes Kubernetes oferece uma abordagem robusta e segura para DevOps.
+
+## 9. Próximos Passos:
+
+Aqui temos alguns pontos que podemos adicionar no futuro para deixar o projeto mais completo.
+
+- **Resources para o deployment:** *limits* e *requests* para os pods
 - **Documentação das variáveis helm**
--   **Monitoramento:** Implementar ferramentas de monitoramento para acompanhar a saúde e o desempenho da aplicação.
--   **Log:** Configurar o log para coletar e analisar as informações de log da aplicação.
--   **Segurança:** Implementar medidas de segurança para proteger a aplicação e os dados.
+- **Monitoramento:** Implementar ferramentas de monitoramento para acompanhar a saúde e o desempenho da aplicação.
+- **Log:** Configurar o log para coletar e analisar as informações de log da aplicação.
+- **Segurança:** Implementar medidas de segurança para proteger a aplicação e os dados.
 
 **Possíveis tópicos para serem adicionados:**
-
 -   **Configuração do Nginx em detalhes**
--   **Estrutura da página web**
--   **Processo de build da imagem Docker**
--   **Testes unitários e de integração**
 -   **Melhores práticas de desenvolvimento**
 -   **Gerenciamento de configurações**
