@@ -2,7 +2,7 @@ namespace: desafio-nginx # namespace da aplicação
 replicasCount: 1 # número de replicas
 image:
   repository: asolheiro/desafio-jackexperts
-  tag: "e3b61c1bcddf3e8d242222d3920dd026053cfc5e"
+  tag: "369d6af13d236c3a5fb984c7173ba10eca7cb790"
 service:
   type: ClusterIP # tipo do service criado
   port: 8080 # porta do service criado
