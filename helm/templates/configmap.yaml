@@ -11,5 +11,5 @@ data:
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
   timeline.html: |
     {{ .Files.Get "timeline,md" | indent 4}}
-#{{ include "desafio-jackexperts.timeline.html.tpl" . | indent 4}}
+
   
