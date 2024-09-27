@@ -52,6 +52,73 @@ Para *deploy* na nuvem:
   - Documentação abrangente sobre a arquitetura, configuração e uso da aplicação
 
 ## 3. Nginx
+Para trabalharmos de forma correta, precisamos alterar o arquivo de configurações do web server também:
+```conf
+# user desafio-jackexperts;
+worker_processes 1;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen 8080;
+        server_name localhost;
+
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+
+        # Desabilitar cache temporário (caso precise)
+        client_body_temp_path /dev/null;
+        proxy_temp_path /dev/null;
+        fastcgi_temp_path /dev/null;
+        uwsgi_temp_path /dev/null;
+        scgi_temp_path /dev/null;
+    }
+}
+
+pid /tmp/nginx.pid;
+```
+
+### 3.1. Parâmetros Globais
+
+- `user desafio-jackexperts`: Define o usuário que o processo Nginx executará.
+- `worker_processes 1`: Configura o Nginx para utilizar apenas um processo worker.
+
+### 3.2. Bloco _events_
+
+- `worker_connections 1024`: Define o número máximo de conexões simultâneas que cada processo worker pode aceitar.
+
+### 3.3. Bloco _http_
+
+- `include /etc/nginx/mime.types`: Inclui o arquivo de configuração padrão do Nginx que define os tipos MIME para diferentes extensões de arquivo.
+- `default_type application/octet-stream`: Define o tipo de conteúdo padrão para arquivos sem extensão MIME definida.
+- `sendfile on`: Habilita o envio de arquivos diretamente do sistema operacional para o cliente, melhorando a performance.
+- `keepalive_timeout 65`: Define o tempo máximo que o Nginx manterá uma conexão aberta em modo keep-alive.
+
+### 3.4. Bloco _server_
+
+Este bloco define as configurações específicas para um servidor virtual.
+
+- `listen 8080`: Define a porta em que o servidor web Nginx irá escutar por requisições (porta 8080 neste caso).
+- `server_name localhost`: Define o nome do host que será mapeado para este servidor virtual (localhost neste caso).
+
+### 3.5. Bloco _location_
+
+- `root /usr/share/nginx/html`: Define o diretório raiz onde o Nginx buscará os arquivos servidos.
+- `index index.html index.htm`: Define os arquivos que o Nginx servirá quando uma requisição for feita para um diretório sem especificar um arquivo.
+
+### 3.6. PID
+- `pid /tmp/nginx.pid`: Define o local onde o Nginx gravará o identificador de processo (PID) do processo mestre.
 
 
 ## 4. Helm
