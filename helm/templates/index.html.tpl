@@ -112,60 +112,58 @@
                         </template>
                     </zero-md>
             </div>
-            <div>
+            <div class="challenge-instructions">
                 <h1>Desafio JackExperts</h1>
-
-    <h2>Instruções Detalhadas</h2>
-    <ul>
-        <li><strong>Criação e Configuração:**</li>
-            <ul>
-                <li>Criar um repositório Git contendo:</li>
+                <h2>Instruções Detalhadas</h2>
+                <ul>
+                <li><strong>Criação e Configuração:</li>
                     <ul>
-                        <li>Dockerfile: Define a imagem do Docker para a aplicação.</li>
-                        <li>Arquivos Helm: Descrevem os recursos Kubernetes para a aplicação.</li>
+                        <li>Criar um repositório Git contendo:</li>
+                        <ul>
+                            <li>Dockerfile: Define a imagem do Docker para a aplicação.</li>
+                            <li>Arquivos Helm: Descrevem os recursos Kubernetes para a aplicação.</li>
+                        </ul>
+                        <li>Construir a imagem Docker e publicá-la no Docker Hub.</li>
+                        <li>Configurar a aplicação para não rodar como root.</li>
+                        <li>Utilizar ConfigMaps para customizar a página web.</li>
+                        <li>Definir todos os objetos Kubernetes utilizando Helm.</li>
+                        <li>Associar um domínio à aplicação.</li>
+                        <li>Aplicar o label `desafio=jackexperts` a todos os objetos.</li>
                     </ul>
-                <li>Construir a imagem Docker e publicá-la no Docker Hub.</li>
-                <li>Configurar a aplicação para não rodar como root.</li>
-                <li>Utilizar ConfigMaps para customizar a página web.</li>
-                <li>Definir todos os objetos Kubernetes utilizando Helm.</li>
-                <li>Associar um domínio à aplicação.</li>
-                <li>Aplicar o label `desafio=jackexperts` a todos os objetos.</li>
-            </ul>
-        <li><strong>Documentação:**</li>
-            <ul>
-                <li>Criar uma documentação completa sobre a aplicação, incluindo:</li>
+                    <li><strong>Documentação:**</li>
                     <ul>
-                        <li>Processo de construção e deploy.</li>
-                        <li>Configuração dos arquivos Dockerfile e Helm.</li>
-                        <li>Utilizacão de ConfigMaps.</li>
-                        <li>Acesso ao domínio da aplicação.</li>
+                        <li>Criar uma documentação completa sobre a aplicação, incluindo:</li>
+                        <ul>
+                            <li>Processo de construção e deploy.</li>
+                            <li>Configuração dos arquivos Dockerfile e Helm.</li>
+                            <li>Utilizacão de ConfigMaps.</li>
+                            <li>Acesso ao domínio da aplicação.</li>
+                        </ul>
                     </ul>
-            </ul>
-        <li><strong>Vídeo Demonstrativo:**</li>
-            <ul>
-                <li>Gravar um vídeo de até 5 minutos apresentando:</li>
-                    <ul>
-                        <li>A aplicação em funcionamento.</li>
-                        <li>Os principais componentes e configurações.</li>
-                        <li>Os desafios encontrados e as soluções adotadas.</li>
+                    <li><strong>Vídeo Demonstrativo:**</li>
+                        <ul>
+                            <li>Gravar um vídeo de até 5 minutos apresentando:</li>
+                            <ul>
+                                <li>A aplicação em funcionamento.</li>
+                                <li>Os principais componentes e configurações.</li>
+                                <li>Os desafios encontrados e as soluções adotadas.</li>
+                            </ul>
+                        </ul>
+                        <li><strong>Entrega:</li>
+                            <ul>
+                                <li>Enviar o repositório Git e o link do vídeo para ruan@jackexperts.com.</li>
+                                <li>Utilizar os usuários GitLab/GitHub ruan.oliveira.</li>
+                                <li>Prazo de entrega: 27/09.</li>
+                            </ul>
+                            <li><strong>Diferencial:</li>
+                                <ul>
+                                    <li>Criar um pipeline CI/CD para automatizar o processo de build e deploy.</li>
+                                    <li>Apresentar a pipeline no vídeo demonstrativo.</li>
+                                </ul>
                     </ul>
-            </ul>
-        <li><strong>Entrega:**</li>
-            <ul>
-                <li>Enviar o repositório Git e o link do vídeo para ruan@jackexperts.com.</li>
-                <li>Utilizar os usuários GitLab/GitHub ruan.oliveira.</li>
-                <li>Prazo de entrega: 27/09.</li>
-            </ul>
-        <li><strong>Diferencial:**</li>
-            <ul>
-                <li>Criar um pipeline CI/CD para automatizar o processo de build e deploy.</li>
-                <li>Apresentar a pipeline no vídeo demonstrativo.</li>
-            </ul>
-    </ul>
-
-    <h2>Informações Adicionais</h2>
-    <p>Para maiores detalhes, consulte a documentação oficial do Docker, Helm e Kubernetes.</p>
-            <div/>
+                    <h2>Informações Adicionais</h2>
+                    <p>Para maiores detalhes, consulte a documentação oficial do Docker, Helm e Kubernetes.</p>
+            </div>
         </body>
         <footer>
             <p>
