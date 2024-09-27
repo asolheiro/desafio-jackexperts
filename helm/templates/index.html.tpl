@@ -217,6 +217,13 @@
                             .md-docs span {
                               display: block;
                             }
+
+                            pre code {
+                              white-space: pre-wrap;
+                              word-wrap: break-word;
+                              max-width: 800px;
+
+                            }
                         </style>
                     </template>
                 </zero-md>
