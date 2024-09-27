@@ -9,5 +9,5 @@ metadata:
 data:
   index.html: |
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
-  index2.html: |
-    {{ .Files.Get "index.html" | indent 4  }}
+  index2.html: {{ .Values.nginx.indexHtml }}
+  timeline.md: {{ .Values.nginx.timelineMd }}
