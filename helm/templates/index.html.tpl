@@ -107,6 +107,10 @@
                             <style>
                                 body {
                                     background-color: #ffb400;
+                                    border-radius: 10px;
+                                    padding: 15px;
+                                    margin: 20px;
+                                    color: #cdd6f4
                                 }
                             </style>
                         </template>
