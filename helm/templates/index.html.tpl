@@ -73,7 +73,11 @@
                         padding: 10px;
                     }
 
-                    .content {
+                    .content-info {
+                        display: none;
+                    }
+
+                    .content-doc {
                         display: none;
                     }
             </style>
@@ -107,11 +111,11 @@
                 </p>
             </div>
             <h2>
-                <button onclick="toggleContent()">Instruções do desafio</button>
+                <button onclick="toggleContentInfo()">Instruções do desafio</button>
                 
             </h2>
             <div class="md-docs container">
-                <div class="content">
+                <div class="content-info">
                 <ul>
                 <li><strong>Criação e Configuração:</li>
                     <ul>
@@ -161,11 +165,11 @@
             </div>
             </div>
             <h2>
-                <button onclick="toggleContent()">Documentação do projeto:</button>
+                <button onclick="toggleContentDoc()">Documentação do projeto:</button>
             </h2>
 
             <div class="md-docs container">
-                <div class="content">
+                <div class="content-doc">
                 <script type="module">
                     import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
                  </script>                 
@@ -201,8 +205,16 @@
                 </div>
             </div>
             <script>
-                function toggleContent() {
-                    var content = document.querySelector('.content');
+                function toggleContentInfo() {
+                    var content = document.querySelector('.content-info');
+                    if (content.style.display === 'none') {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                }
+                function toggleContentDoc() {
+                    var content = document.querySelector('.content-doc');
                     if (content.style.display === 'none') {
                         content.style.display = 'block';
                     } else {
