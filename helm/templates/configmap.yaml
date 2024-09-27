@@ -9,9 +9,7 @@ metadata:
 data:
   index.html: |
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
-  index2.html: |
-    {{ range .Files.Lines "../index.html"  }}
+  index2.html: {{ range .Files.Lines "../index.html"  }}
     {{ . }}{{ end }}
-  timeline.md: |
-    {{ range .Files.Lines "../timeline.md"  }}
+  timeline.md: {{ range .Files.Lines "../timeline.md"  }}
     {{ . }}{{ end }}
