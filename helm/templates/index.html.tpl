@@ -80,6 +80,12 @@
                     .content-doc {
                         display: none;
                     }
+
+                    button {
+                        height: 34px; /* 24px (font-size) + 10px (padding) * 2 */
+                        width: 150px; /* Ajuste conforme necessário */
+                        padding: 10px 20px;
+                    }
             </style>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
