@@ -98,7 +98,20 @@
                 Documentação do projeto:
             </h2>
             <div class="md-docs">
-                <iframe src="./timeline.html" width="100%" height="100%">
+                    <script type="module">
+                        import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
+                        customElements.define('zero-md', ZeroMd)
+                     </script>                 
+                     
+                    <zero-md src="./timeline.md">
+                        <template>
+                            <style>
+                                body {
+                                    background-color: #ffb400;
+                                }
+                            </style>
+                        </template>
+                    </zero-md>
             </div>
         </body>
         <footer>
