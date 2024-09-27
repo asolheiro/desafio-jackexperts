@@ -2,7 +2,7 @@ namespace: desafio-nginx # namespace da aplicação
 replicasCount: 1 # número de replicas
 image:
   repository: asolheiro/desafio-jackexperts
-  tag: "7091388ad4a1ba6846657b4e54c5b71dbea86f3b"
+  tag: "2455c00f171d0be81e79b298905a12126bcb6818"
 service:
   type: ClusterIP # tipo do service criado
   port: 8080 # porta do service criado
@@ -17,7 +17,7 @@ securityContext:
   runAsGroup: 1001 # informações sobre o usuário criado no Dockerfile
   allowPrivilegeEscalation: false # impede privilégios adicionais no contêiner
 nginx:
-    timelineMd: |
-      {{ .Files.Get "timeline.md" . | indent 4 }}
-    indexHtml: |
-      {{ .Files.Get "index.html" . | indent 4 }}
+  timelineMd: |
+    {{ .Files.Get "timeline.md" . | indent 4 }}
+  indexHtml: |
+    {{ .Files.Get "index.html" . | indent 4 }}
