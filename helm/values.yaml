@@ -16,8 +16,3 @@ securityContext:
   runAsUser: 1001 # informações sobre o usuário criado no Dockerfile
   runAsGroup: 1001 # informações sobre o usuário criado no Dockerfile
   allowPrivilegeEscalation: false # impede privilégios adicionais no contêiner
-nginx:
-  timelineMd: {{ range .Files.Lines "timeline.md"  }}
-    {{ . }}{{ end }}
-  indexHtml: {{ range .Files.Lines "index.html"  }}
-    {{ . }}{{ end }}
