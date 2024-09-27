@@ -81,16 +81,7 @@
   <p>O desafio pedia especificamente por uma página web customizável regida por um ConfigMap, logo busquei montá-lo em primeiro lugar. </p>
   <p>Ele é um objeto usado para armazenar dados de configuração em pares &quot;chave-valor&quot;. Ele permite que eu separe as configurações da aplicação da lógica de execução. Dessa forma, é possível alterar as configurações sem precisar recriar ou modificar a imagem da aplicação. </p>
   <p>As informações armazenadas em um ConfigMap podem ser injetadas nos contêineres como variáveis de ambiente ou montadas como arquivos de configuração. É útil para gerenciar parâmetros, como URLs de serviços externos, chaves de configuração, entre outros, no nosso caso o <code>index.html</code> consumido pelo nginx.</p>
-  <pre><code class="lang-yaml"><span class="hljs-symbol">apiVersion:</span> v1
-  <span class="hljs-symbol">kind:</span> ConfigMap
-  <span class="hljs-symbol">metadata:</span>
-  <span class="hljs-symbol">  name:</span> {{ .Release.Name }}-configmap
-  <span class="hljs-symbol">  labels:</span>
-  <span class="hljs-symbol">    desafio:</span> jackexperts
-  <span class="hljs-symbol">data:</span>
-    index.html: |
-      {{ include <span class="hljs-string">"desafio-jackexperts.index.html.tpl"</span> . | indent <span class="hljs-number">4</span> }}
-  </code></pre>
+ 
   <p>Montamos o arquivo e definimos variáveis, delimitadas pelos dois pares de chaves {{...}}, que posteriormente serão substituídas na instalação.</p>
   <p>A primeira será definida no momento da instalação, já a segunda faz referência à página que vamos exibir. Ela tem a seguinte estrutura:</p>
   <pre><code class="lang-yaml">{{ include <span class="hljs-string">"&lt;TEMPLATE_NAME&gt;"</span> [CONTEXT] | [INDENTATION] }}
