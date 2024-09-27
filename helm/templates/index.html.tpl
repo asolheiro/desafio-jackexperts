@@ -67,6 +67,15 @@
                     margin: 20px;
                     color: #cdd6f4
                     }
+
+                    .container {
+                        border: 1px solid black;
+                        padding: 10px;
+                    }
+
+                    .content {
+                        display: none;
+                    }
             </style>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,7 +160,9 @@
             <h2>
                 Documentação do projeto:
             </h2>
-            <div class="md-docs">
+            <button onclick="toggleContent()">Mostrar/Ocultar</button>
+            <div class="md-docs container">
+                <div class="content">
                 <script type="module">
                     import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
                  </script>                 
@@ -184,7 +195,18 @@
                         </style>
                     </template>
                 </zero-md>
+                </div>
             </div>
+            <script>
+                function toggleContent() {
+                    var content = document.querySelector('.content');
+                    if (content.style.display === 'none') {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                }
+            </script>
             <h2>Sugestões e melhorias são muito bem vindas.</h2>
         </body>
         <footer>
