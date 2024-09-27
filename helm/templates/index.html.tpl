@@ -81,10 +81,15 @@
                         display: none;
                     }
 
-                    button {
-                        height: 34px; /* 24px (font-size) + 10px (padding) * 2 */
-                        width: 150px; /* Ajuste conforme necessário */
-                        padding: 10px 20px;
+                    h2, button {
+                      font-size: inherit; /* Herda o tamanho da fonte do elemento pai */
+                      line-height: inherit; /* Herda a altura da linha do elemento pai */
+                      font-family: inherit; /* Herda a família de fonte do elemento pai */
+                      padding: 0.5em; /* Adiciona um padding para criar um espaço em torno do texto */
+                      border: none; /* Remove a borda padrão do botão */
+                      background-color: #4CAF50; /* Define a cor de fundo do botão */
+                      color: white; /* Define a cor do texto do botão */
+                      cursor: pointer; /* Muda o cursor para indicar que é clicável */
                     }
             </style>
             <link rel="preconnect" href="https://fonts.googleapis.com">
