@@ -9,7 +9,7 @@ metadata:
 data:
   index.html: |
     {{ include "desafio-jackexperts.index.html.tpl" . | indent 4 }}
-  timeline.html: |
+  timeline.md: |
     {{ .Files.Get "timeline,md" | indent 4}}
 
   
