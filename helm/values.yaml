@@ -1,15 +1,15 @@
 namespace: desafio-nginx # namespace da aplicação
-replicasCount: 1  # número de replicas
+replicasCount: 1 # número de replicas
 image:
   repository: asolheiro/desafio-jackexperts
-  tag: "1063974fcb32edc586fbbbf442d4f5b211031f72"
+  tag: "e68b2b51d6c68ad229072db43184b130219d1fa9"
 service:
   type: ClusterIP # tipo do service criado
-  port: 8080  # porta do service criado
+  port: 8080 # porta do service criado
 traefik:
   service:
-    type: LoadBalancer  # tipo do service
-    externalIP: "177.93.134.211"  # IP da VM que hospeda o Cluster
+    type: LoadBalancer # tipo do service
+    externalIP: "177.93.134.211" # IP da VM que hospeda o Cluster
 ingress:
   domain: "armandosolheiro.xyz" # domínio que aponta para o cluster
 securityContext:
