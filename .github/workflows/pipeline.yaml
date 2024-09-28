@@ -158,7 +158,7 @@ jobs:
   certs:
     name: Creating certificates
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: update
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
