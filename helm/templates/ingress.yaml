@@ -5,14 +5,16 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     desafio: jackexperts
-  annotaions:
+  annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/force-ssel-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassname: nginx
   tls:
   - hosts:
     - {{ .Values.ingress.domain }}
-    secretName: armandosolheiro.xyz
+    secretName: {{ .Values.ingress.domain }}-tls
   rules:
     - host: {{ .Values.ingress.domain }}
       http: 

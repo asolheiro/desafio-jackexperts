@@ -224,7 +224,13 @@ jobs:
         run: kubectl get clusterissuer -A
 
       - name: Verify Certificate status
-        run: kubectl describe certificate seu-dominio-cert
+        run: kubectl describe certificate domain-cert -n desafio-nginx
+
+      - name: Verify Ingress
+        run: kubectl describe ingress desafio-jackexperts-ingress -n desafio-nginx
+
+      
+      
 
 
 
