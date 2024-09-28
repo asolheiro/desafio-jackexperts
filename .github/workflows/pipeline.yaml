@@ -158,7 +158,7 @@ jobs:
   deploy:
     name: Deploy to Kubernetes
     runs-on: ubuntu-latest
-    needs: certs
+    needs: update
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
