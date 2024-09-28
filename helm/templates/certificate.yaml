@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: domain-cert
+  namespace: default
+  labels:
+    desafio: jackexperts
+spec:
+  secretName: domain-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: armandosolheiro.xyz
+  dnsNames:
+  - armandosolheiro.xyz
