@@ -1,4 +1,4 @@
-namespace: desafio-nginx # namespace da aplicação
+namespace: desafio-jack # namespace da aplicação
 replicasCount: 1 # número de replicas
 image:
   repository: asolheiro/desafio-jackexperts
