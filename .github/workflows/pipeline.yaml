@@ -185,7 +185,6 @@ jobs:
           cd ./helm
           ls -lha ./
           helm upgrade -i desafio-jackexperts . -f values.yaml
-          helm uninstall desafio-jackexperts
 
       - name: Verify upgrades
         run: kubectl get all -A
