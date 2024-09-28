@@ -10,7 +10,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssel-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassname: nginx
+  ingressClassName: nginx
   tls:
   - hosts:
     - {{ .Values.ingress.domain }}
