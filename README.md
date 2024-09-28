@@ -373,7 +373,9 @@ Na interface da plataforma fornecedora do domínio,
 
 ## 7. Pipeline:
 
-Esta seção descreve a pipeline do GitHub Actions utilizada para construir, testar, publicar e implantar uma aplicação Dockerizada no Kubernetes. 
+Esta seção descreve a pipeline do GitHub Actions utilizada para construir, testar, publicar e implantar uma aplicação Dockerizada no Kubernetes.
+
+Esta pipeline automatiza o processo de construção, teste e implantação de uma aplicação Dockerizada, garantindo que as imagens sejam seguras e estejam sempre atualizadas no cluster Kubernetes. O uso de ferramentas como Trivy para análise de vulnerabilidades e Helm para gerenciamento de pacotes Kubernetes oferece uma abordagem robusta e segura para DevOps.
 
 A pipeline é composta por cinco jobs principais: 
 - `build`, 
@@ -460,21 +462,14 @@ A pipeline é acionada em cada push para a *branch* `main`. A seguir, cada job �
 4. **[Verify kubectl access](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/)**: Realiza uma verificação para garantir que o `kubectl` pode acessar o cluster.
 5. **[Helm upgrade](https://helm.sh/docs/helm/helm_upgrade/)**: Clona o repositório Helm e realiza o upgrade ou instalação do chart.
 
-## 8. Considerações Finais
-
-Esta pipeline automatiza o processo de construção, teste e implantação de uma aplicação Dockerizada, garantindo que as imagens sejam seguras e estejam sempre atualizadas no cluster Kubernetes. O uso de ferramentas como Trivy para análise de vulnerabilidades e Helm para gerenciamento de pacotes Kubernetes oferece uma abordagem robusta e segura para DevOps.
-
-## 9. Próximos Passos:
+## 8. Próximos Passos:
 
 Aqui temos alguns pontos que podemos adicionar no futuro para deixar o projeto mais completo.
 
 - **Resources para o deployment:** *limits* e *requests* para os pods
-- **Documentação das variáveis helm**
 - **Monitoramento:** Implementar ferramentas de monitoramento para acompanhar a saúde e o desempenho da aplicação.
 - **Log:** Configurar o log para coletar e analisar as informações de log da aplicação.
 - **Segurança:** Implementar medidas de segurança para proteger a aplicação e os dados.
+- **Vulnerabilidades:** correção das vulnerabilidades apontadas pelo Trivy
+- **Boas práticas:** ajustes no projeto para se adequar às boas práticas do segmento
 
-**Possíveis tópicos para serem adicionados:**
--   **Configuração do Nginx em detalhes**
--   **Melhores práticas de desenvolvimento**
--   **Gerenciamento de configurações**
