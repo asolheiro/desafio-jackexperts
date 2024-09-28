@@ -23,7 +23,7 @@
                     }
 
                     h3 {
-                    margin-top: 50;
+                    margin-top: 15;
                     margin-left: 15;
                     color: #007acc;
                     }
@@ -88,9 +88,10 @@
                     }
                     button {
                       font-family: 'Montserrat', sans-serif;
+                      font-weight: bold;
                       padding: 0.5em;
                       background-color: #ffb400;
-                      color: #2d2d30;
+                      color: #007acc;
                       cursor: pointer;
                       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
                       border-radius: 10px;
@@ -122,7 +123,7 @@
                     Repositório no GitHub </a>
                 </p>
                 <p class="items">
-                    <a href="https://youtube.com/XXXXXXXXXXXXXXX"><img class="list-icons" src="https://www.vectorlogo.zone/logos/youtube/youtube-icon.svg">
+                    <a href="https://youtu.be/g42GReG3JNo"><img class="list-icons" src="https://www.vectorlogo.zone/logos/youtube/youtube-icon.svg">
                     Vídeo de apresentação</a>
                 </p>
             </div>
@@ -131,55 +132,70 @@
                 
             </h2>
             <div class="md-docs container">
-                <div class="content-info">
+            <div class="md-docs content-info">
+            <p>
+                <b>Objetivo:</b>
+                <ul>Aplicação simples com página HTML customizável, definida via Helm e hospedada em um cluster Kubernetes</ul>
+            </p>
+            <ul>
+            <li><strong>Criação</strong></li>
                 <ul>
-                <li><strong>Criação e Configuração:</li>
+                    <br>
+                    <li>Criar um repositório GitHub ou GitLab contendo:</li>
                     <ul>
-                        <li>Criar um repositório Git contendo:</li>
-                        <ul>
-                            <li>Dockerfile: Define a imagem do Docker para a aplicação.</li>
-                            <li>Arquivos Helm: Descrevem os recursos Kubernetes para a aplicação.</li>
-                        </ul>
-                        <li>Construir a imagem Docker e publicá-la no Docker Hub.</li>
-                        <li>Configurar a aplicação para não rodar como root.</li>
-                        <li>Utilizar ConfigMaps para customizar a página web.</li>
-                        <li>Definir todos os objetos Kubernetes utilizando Helm.</li>
-                        <li>Associar um domínio à aplicação.</li>
-                        <li>Aplicar o label `desafio=jackexperts` a todos os objetos.</li>
+                        <li>Dockerfile.</li>
+                        <li>Arquivos Helm.</li>
                     </ul>
-                    <li><strong>Documentação:</li>
+                    <li>Publicar imagem no DockerHub.</li>
+                    <li>Aplicar o label "desafio=jackexperts" a todos os objetos.</li>
+                </ul>
+                <br>
+                <li><strong>Configuração</strong></li>
+                <ul>
+                    <br>
+                    <li>Utilizar o ConfigMap para configurar a página web</li>
+                    <li>Configurar todos os objetos do kubernetes usando templates helm</li>
+                </ul>
+                <br>
+                <li><strong>Execução</strong></li>
+                <ul>
+                    <br>
+                    <li>Rodar aplicação como usuário não-root</li>
+                    <li>Rodar aplicação em um Cluster Kubernetes na Cloud</li>
+                    <li>Realizar instalação e atualização dos objetos do cluster através do Helm</li>
+                    <li>Apontar um domínio para o cluster</li>
+                </ul>
+                <br>
+                <li><strong>Documentação:</strong></li>
+                <ul>
+                    <li>Criar uma documentação completa sobre a aplicação, incluindo:</li>
                     <ul>
-                        <li>Criar uma documentação completa sobre a aplicação, incluindo:</li>
+                        <li>Processo de construção e deploy.</li>
+                        <li>Configuração dos arquivos Dockerfile e Helm.</li>
+                        <li>Utilizacão de ConfigMaps.</li>
+                        <li>Acesso ao domínio da aplicação.</li>
+                    </ul>
+                </ul>
+                <br>
+                <li><strong>Vídeo Demonstrativo:</strong></li>
+                    <ul>
+                        <li>Gravar um vídeo de até 5 minutos apresentando:</li>
                         <ul>
-                            <li>Processo de construção e deploy.</li>
-                            <li>Configuração dos arquivos Dockerfile e Helm.</li>
-                            <li>Utilizacão de ConfigMaps.</li>
-                            <li>Acesso ao domínio da aplicação.</li>
+                            <li>A aplicação em funcionamento.</li>
+                            <li>Os principais componentes e configurações.</li>
+                            <li>Os desafios encontrados e as soluções adotadas.</li>
                         </ul>
                     </ul>
-                    <li><strong>Vídeo Demonstrativo:</li>
+                <br>
+                    <br>
+                    <li><strong>Diferencial:</strong></li>
                         <ul>
-                            <li>Gravar um vídeo de até 5 minutos apresentando:</li>
-                            <ul>
-                                <li>A aplicação em funcionamento.</li>
-                                <li>Os principais componentes e configurações.</li>
-                                <li>Os desafios encontrados e as soluções adotadas.</li>
-                            </ul>
+                            <li>Criar um pipeline CI/CD para automatizar o processo de build e deploy.</li>
+                            <li>Apresentar a pipeline no vídeo demonstrativo.</li>
                         </ul>
-                        <li><strong>Entrega:</li>
-                            <ul>
-                                <li>Enviar o repositório Git e o link do vídeo para ruan@jackexperts.com.</li>
-                                <li>Utilizar os usuários GitLab/GitHub ruan.oliveira.</li>
-                                <li>Prazo de entrega: 27/09.</li>
-                            </ul>
-                            <li><strong>Diferencial:</li>
-                                <ul>
-                                    <li>Criar um pipeline CI/CD para automatizar o processo de build e deploy.</li>
-                                    <li>Apresentar a pipeline no vídeo demonstrativo.</li>
-                                </ul>
-                    </ul>
-            </div>
-            </div>
+                </ul>
+        </div>
+        </div>
             <h2>
                 <button onclick="toggleContentDoc()">Documentação do projeto:</button>
             </h2>
@@ -190,7 +206,7 @@
                     import ZeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3'
                  </script>                 
                  
-                <zero-md src="https://gitlab.com/avgsolheiro/desafio-jackexperts-docs/-/raw/main/README.md">
+                <zero-md src="https://br-ne1.magaluobjects.com/juris-public-files-to-download/armando/README.md">
                     <template>
                         <style>
                             body {

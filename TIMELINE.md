@@ -209,4 +209,4 @@ spec:
     app: {{ .Release.Name }}
 ```
 
-Os valores de cada campo estão descritos no arquivo `values.yaml`, mas aqui definiremos um service to tipo ClusterIp
+Os valores de cada campo estão descritos no arquivo `values.yaml`, mas aqui definiremos um service to tipo ClusterIpS
