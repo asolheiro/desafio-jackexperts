@@ -3,7 +3,7 @@ name: Desafio JackExperts - Pipeline
 on: 
   push:
     branches:
-      - main
+      - deploy
 
 jobs:
   build:
