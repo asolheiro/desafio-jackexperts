@@ -34,6 +34,34 @@ Para esse criar esse *script* usei o [zero-md](https://zerodevx.github.io/zero-m
 
 # 2. Nginx
 
+Para consumir esse `index.html` teremos um Nginx na porta 8080. O Dockerfile que criei para descrevê-lo está abaixo:
+
+```Dockerfile
+FROM nginx:alpine
+
+ARG USER_ID=1001
+ARG GROUP_ID=1001
+
+RUN addgroup -g ${GROUP_ID} desafio-jackexperts && \
+    adduser -D -u ${USER_ID} -G desafio-jackexperts desafio-jackexperts
+
+COPY ./custom_nginx.conf /etc/nginx/nginx.conf
+
+RUN mkdir -p /var/cache/nginx /var/run /var/log/nginx /var/temp/nginx && \
+    chown -R desafio-jackexperts /var/cache/nginx /var/run /var/log/nginx /var/temp/nginx
+
+RUN chown -R desafio-jackexperts /usr/share/nginx/html
+
+WORKDIR /usr/share/nginx/html
+
+USER desafio-jackexperts
+
+EXPOSE 8080
+
+CMD [ "nginx", "-g", "daemon off;"]
+```
+
+
 # 3. [Helm](https://helm.sh/)
 
 O segundo passo foi montar o que será consumido pelo Helm.
