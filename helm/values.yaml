@@ -1,5 +1,5 @@
-namespace: desafio-jackexperts
-replicasCount: 1
+namespace: desafio-jackexperts 
+replicasCount: 1 
 image:
   repository: asolheiro/desafio-jackexperts
   tag: "f0fc4ce5a29bdf692c0a180963eafaa461c72867"
