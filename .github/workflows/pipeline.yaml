@@ -183,7 +183,6 @@ jobs:
         run: |
           git clone https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
           cd ./helm
-          ls -lha ./
           helm upgrade -i desafio-jackexperts . -f values.yaml
 
       - name: Verify upgrades

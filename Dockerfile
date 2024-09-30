@@ -1,7 +1,5 @@
 FROM nginx:alpine
 
-
-# RUN adduser -D -g 'www' desafio-jackexperts
 ARG USER_ID=1001
 ARG GROUP_ID=1001
 

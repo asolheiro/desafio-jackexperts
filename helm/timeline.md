@@ -34,6 +34,8 @@ Para esse criar esse *script* usei o [zero-md](https://zerodevx.github.io/zero-m
 
 # 2. Nginx
 
+Aqui temos que ter que bastante atenção. 
+
 Para consumir esse `index.html` teremos um Nginx na porta 8080. O Dockerfile que criei para descrevê-lo está abaixo:
 
 ```Dockerfile
@@ -60,6 +62,17 @@ EXPOSE 8080
 
 CMD [ "nginx", "-g", "daemon off;"]
 ```
+
+## 2.1. Usuário não root:
+
+O desafio pede especificamente que o nginx não seja executado em usuário *root*. Então, paraatender esse requisito, temos que construir alguns elementos aqui.
+
+O primeiro passo é definir os IDs do usuário. Fazemos dessa forma, pois mais tarde, nos helm charts, precisaremos passá-los para dizer com qual usuário rodaremos a aplicação.
+
+Além disso, também precisamos criar uma série de pastas para o usuário recém definido. Isso porque o Nginx tentará ler e escrever dados em alguns diretórios, então precisamos garantir que as permissões estarão corretas.
+
+
+
 
 
 # 3. [Helm](https://helm.sh/)
