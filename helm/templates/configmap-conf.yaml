@@ -34,6 +34,7 @@ data:
                 index  index.html index.htm;
             }
 
+            #
             client_body_temp_path /dev/null;
             proxy_temp_path /dev/null;
             fastcgi_temp_path /dev/null;
