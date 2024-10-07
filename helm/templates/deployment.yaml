@@ -23,6 +23,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 8080
+            - containerPort: 443
           securityContext:
             runAsUser: {{ .Values.securityContext.runAsUser }}
             runAsGroup: {{ .Values.securityContext.runAsGroup }}
@@ -30,7 +31,22 @@ spec:
           volumeMounts:
             - name: html-volume
               mountPath: /usr/share/nginx/html
+            - name: nginx-conf
+              mountPath: /etc/nginx/
+              subPath: nginx.conf
+            - name: nginx-tls
+              mountPath: /etc/nginx/tls
       volumes:
         - name: html-volume
           configMap:
-            name: {{ .Release.Name }}-configmap
+            name: {{ .Release.Name }}-index-configmap
+        - name: nginx-conf
+          configMap:
+            name: {{ .Release.Name }}-conf-configmap
+        - name: nginx-tls
+          secret:
+            - key: tls.crt
+              path: certificado.crt
+            - key: tls.key
+              path: chave-privada.key
+

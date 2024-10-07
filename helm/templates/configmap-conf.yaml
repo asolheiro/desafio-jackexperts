@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-conf-configmap
+  namespace: {{ .Values.namespace }}
+  labels:
+    desafio: jackexperts
+    app: nginx
+data:
+  nginx.conf: |
+    worker_processes 1;
+
+    events {
+        worker_connections 1024;
+    }
+
+    http {
+        include       /etc/nginx/mime.types;
+        default_type  application/octet-stream;
+
+        sendfile        on;
+        keepalive_timeout  65;
+
+        server {
+            listen 8080;
+            listen 443 ssl;
+
+            ssl_certificate /etc/nginx/tls/certificate.crt;
+            ssl_certificate_key /etc/nginx/tls/chave-privada.key;
+            server_name localhost;
+
+            location / {
+                root   /usr/share/nginx/html;
+                index  index.html index.htm;
+            }
+
+            client_body_temp_path /dev/null;
+            proxy_temp_path /dev/null;
+            fastcgi_temp_path /dev/null;
+            uwsgi_temp_path /dev/null;
+            scgi_temp_path /dev/null;
+        }
+    }
+
+    pid /tmp/nginx.pid;
+
