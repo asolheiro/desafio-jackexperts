@@ -2,7 +2,7 @@ namespace: desafio-jackexperts
 replicasCount: 1
 image:
   repository: asolheiro/desafio-jackexperts
-  tag: "c60851a21e3c8cdfffcce303ef11495fba930d74"
+  tag: "1b7a42e861aa856ba2bd1739c0aa14f8daaca5aa"
 service:
   type: ClusterIP
   port: 8080
@@ -16,3 +16,9 @@ securityContext:
   runAsUser: 1001
   runAsGroup: 1001
   allowPrivilegeEscalation: false
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: "25%"
+    maxUnavailable: "25%"
+
