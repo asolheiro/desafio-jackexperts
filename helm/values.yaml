@@ -16,8 +16,3 @@ securityContext:
   runAsUser: 1001
   runAsGroup: 1001
   allowPrivilegeEscalation: false
-strategy:
-  type: RollingUpdate
-  rollingUpdate:
-    maxSurge: "25%"
-    maxUnavailable: "25%"

@@ -10,5 +10,7 @@ spec:
   ports:
   - port: {{ .Values.service.port }}
     targetPort: 8080
+  - port: 443
+    targetPort: 4443
   selector:
     app: {{ .Release.Name }}
