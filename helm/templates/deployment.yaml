@@ -48,7 +48,7 @@ spec:
             secretName: {{ .Release.Name }}-secret
             items:
               - key: tls.crt
-                path: certificado.crt
+                path: tls.crt
               - key: tls.key
-                path: chave-privada.key
+                path: tls.key
 

@@ -5,7 +5,13 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     desafio: jackexperts
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+  - hosts:
+    - "armandosolheiro.xyz"
+    secretName: {{ .Release.Name }}-secret
   rules:
     - host: {{ .Values.ingress.domain }}
       http: 
