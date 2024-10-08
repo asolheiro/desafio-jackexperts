@@ -50,10 +50,11 @@ spec:
           configMap:
             name: {{ .Release.Name }}-conf-configmap
         - name: nginx-tls
-          secretName: {{ .Release.Name }}-secret
-          items:
-            - key: tls.crt
-              path: certificado.crt
-            - key: tls.key
-              path: chave-privada.key
+          secret:
+            secretName: {{ .Release.Name }}-secret
+            items:
+              - key: tls.crt
+                path: certificado.crt
+              - key: tls.key
+                path: chave-privada.key
 
