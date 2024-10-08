@@ -179,12 +179,6 @@ jobs:
       - name: Verify kubectl access
         run:  kubectl get nodes -A
 
-      - name: Install Nginx Ingress 
-        run: |
-          helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-          helm repo update
-          helm upgrade -i ingress-nginx ingress-nginx/ingress-nginx
-
       - name: Handle chart
         run: |
           git clone https://${{ secrets.user_github }}:${{ secrets.GITHUB_TOKEN }}@github.com/rmndvngrpslhr/desafio-jackexperts.git
